@@ -1,0 +1,54 @@
+linters:
+  SelectorFormat:
+    convention: hyphenated_BEM
+
+  PropertyUnits:
+    properties:
+      width: ['rem', 'em', '%']
+      height: ['rem', 'em', '%']
+      padding: ['rem', 'em']
+      margin: ['rem', 'em']
+      font-size: ['rem', 'em']
+      border: ['px']
+
+  PropertySortOrder:
+    order:
+      - position
+      - z-index
+      - top
+      - right
+      - bottom
+      - left
+
+      - display
+      - overflow
+      - width
+      - height
+      - max-width
+      - max-height
+      - padding
+      - margin
+
+      - flex-direction
+      - flex-wrap
+      - justify-content
+      - align-items
+      - align-self
+      - flex
+      - flex-grow
+      - flex-shrink
+      - flex-basis
+      - order
+
+      - background
+      - background-color
+      - background-image
+      - background-position
+
+      - font-family
+      - font-size
+      - line-height
+      - text-align
+      - color
+
+    ignore_unspecified: true

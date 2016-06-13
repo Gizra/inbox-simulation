@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+  {% include components/head.html %}
+  <body>
+    <div style="display:none;">{% include elements.svg %}</div>
+    {% include components/header_logged-in.html %}
+
+    <main>
+      {{ content }}
+    </main>
+
+  {% include components/footer.html %}
+
+    <script src="assets/javascript/script.js"></script>
+  </body>
+</html>
