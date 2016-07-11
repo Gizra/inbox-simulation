@@ -178,9 +178,9 @@ gulp.task("serve:dev", ["styles", "jekyll:dev", "js"], function () {
 // These tasks will look for files that change while serving and will auto-regenerate or
 // reload the website accordingly. Update or add other files you need to be watched.
 gulp.task("watch", function () {
-  gulp.watch(["src/**/*.md", "src/**/*.html", "src/**/*.xml", "src/**/*.txt", "src/**/*.js"], ["jekyll-rebuild"]);
+  gulp.watch(["src/**/*.md", "src/**/*.html", "src/**/*.xml", "src/**/*.txt", "src/**/*.js"], ["jekyll-rebuild", reload]);
   gulp.watch(["serve/assets/stylesheets/*.css"], reload({stream: true}));
-  gulp.watch(["src/assets/scss/**/*.scss"], ["styles"]);
+  gulp.watch(["src/assets/scss/**/*.scss"], ["styles", reload]);
 });
 
 // Serve the site after optimizations to see that everything looks fine
