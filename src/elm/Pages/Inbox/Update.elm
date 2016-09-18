@@ -9,19 +9,11 @@ init =
 
 
 type Msg
-    = Decrement
-    | Increment
+    = NoOp
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update action model =
     case action of
-        Decrement ->
-            ( model - 1
-            , Cmd.none
-            )
-
-        Increment ->
-            ( model + 1
-            , Cmd.none
-            )
+        NoOp ->
+            model ! []
