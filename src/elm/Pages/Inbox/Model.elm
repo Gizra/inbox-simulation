@@ -7,6 +7,7 @@ import Email.Model exposing (..)
 type alias Model =
     { emails : Dict EmailType Email
     , selectedEmail : Maybe EmailType
+    , openedEmails : List EmailType
     }
 
 
@@ -14,6 +15,7 @@ emptyModel : Model
 emptyModel =
     { emails = Dict.fromList emails
     , selectedEmail = Just "Urgent"
+    , openedEmails = []
     }
 
 
