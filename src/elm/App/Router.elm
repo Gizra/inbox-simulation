@@ -22,7 +22,7 @@ location2messages location =
         "" ->
             []
 
-        "#Inbox" ->
+        "#inbox" ->
             [ SetActivePage Inbox ]
 
         "#404" ->
