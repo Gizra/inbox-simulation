@@ -38,7 +38,7 @@ label: Inbox
         <span class="sidebar_left__search__text">Search Mail and People</i></span>
         <span class="sidebar_left__search__icon"><i class="search icon"></i></span>
       </div>
-        
+
       <div class="sidebar_left__folders">
         <div class="ui vertical secondary menu">
           <div class="item">
@@ -73,76 +73,12 @@ label: Inbox
       <div class="content__messages">
         <div class="content__messages__list">
           <div class="ui relaxed divided list">
-            <div class="item">
-              <div class="content__messages__list__checkbox">
-                <input type="checkbox">
-              </div>
-              <div class="content__messages__list__item">
-                <div class="content__messages__list__item__from">Adam Stewart</div>
-                <div class="content__messages__list__item__subject">Urgent needs attention</div>
-                <div class="content__messages__list__item__content">Can we get an update on the latest version of the document.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content__messages__list__checkbox">
-                <input type="checkbox">
-              </div>
-              <div class="content__messages__list__item">
-                <div class="content__messages__list__item__from">Adam Stewart</div>
-                <div class="content__messages__list__item__subject">Urgent needs attention</div>
-                <div class="content__messages__list__item__content">Can we get an update on the latest version of the document.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content__messages__list__checkbox">
-                <input type="checkbox">
-              </div>
-              <div class="content__messages__list__item">
-                <div class="content__messages__list__item__from">Adam Stewart</div>
-                <div class="content__messages__list__item__subject">Urgent needs attention</div>
-                <div class="content__messages__list__item__content">Can we get an update on the latest version of the document.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content__messages__list__checkbox">
-                <input type="checkbox">
-              </div>
-              <div class="content__messages__list__item">
-                <div class="content__messages__list__item__from">Adam Stewart</div>
-                <div class="content__messages__list__item__subject">Urgent needs attention</div>
-                <div class="content__messages__list__item__content">Can we get an update on the latest version of the document.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content__messages__list__checkbox">
-                <input type="checkbox">
-              </div>
-              <div class="content__messages__list__item">
-                <div class="content__messages__list__item__from">Adam Stewart</div>
-                <div class="content__messages__list__item__subject">Urgent needs attention</div>
-                <div class="content__messages__list__item__content">Can we get an update on the latest version of the document.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content__messages__list__checkbox">
-                <input type="checkbox">
-              </div>
-              <div class="content__messages__list__item">
-                <div class="content__messages__list__item__from">Adam Stewart</div>
-                <div class="content__messages__list__item__subject">Urgent needs attention</div>
-                <div class="content__messages__list__item__content">Can we get an update on the latest version of the document.</div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="content__messages__list__checkbox">
-                <input type="checkbox">
-              </div>
-              <div class="content__messages__list__item">
-                <div class="content__messages__list__item__from">Adam Stewart</div>
-                <div class="content__messages__list__item__subject">Urgent needs attention</div>
-                <div class="content__messages__list__item__content">Can we get an update on the latest version of the document.</div>
-              </div>
-            </div>
+
+              {%include mail_item.html %}
+              {%include mail_item.html %}
+              {%include mail_item.html %}
+              {%include mail_item.html %}
+
           </div>
         </div>
         <div class="content__messages__selected">
@@ -157,23 +93,23 @@ label: Inbox
           <div class="content__messages__selected__content">
             <p>Adam,</p>
 
-            <p>Bacon ipsum dolor amet ham hock short loin shoulder capicola landjaeger sirloin beef ribs. Shank 
-              rump leberkas picanha kevin jerky. Ground round short loin shank, tail beef ribs doner pig flank 
-              cupim. Pig ham venison tongue alcatra andouille sirloin pancetta bresaola leberkas. Kielbasa meatball 
-              alcatra pork shoulder prosciutto pancetta landjaeger short loin shankle andouille. Ham hock short 
-              ribs pork belly venison drumstick landjaeger chicken rump fatback doner kevin. Boudin tongue andouille 
+            <p>Bacon ipsum dolor amet ham hock short loin shoulder capicola landjaeger sirloin beef ribs. Shank
+              rump leberkas picanha kevin jerky. Ground round short loin shank, tail beef ribs doner pig flank
+              cupim. Pig ham venison tongue alcatra andouille sirloin pancetta bresaola leberkas. Kielbasa meatball
+              alcatra pork shoulder prosciutto pancetta landjaeger short loin shankle andouille. Ham hock short
+              ribs pork belly venison drumstick landjaeger chicken rump fatback doner kevin. Boudin tongue andouille
               turducken.
             </p>
 
-            <p>Shankle doner filet mignon rump picanha. Pastrami t-bone pork loin sausage. Turducken spare ribs 
-              alcatra, sausage sirloin short loin kielbasa ribeye. Tongue tri-tip jerky chicken filet mignon, 
+            <p>Shankle doner filet mignon rump picanha. Pastrami t-bone pork loin sausage. Turducken spare ribs
+              alcatra, sausage sirloin short loin kielbasa ribeye. Tongue tri-tip jerky chicken filet mignon,
               tail hamburger turkey venison shankle pig ham capicola kevin.
             </p>
 
-            <p>Fatback pig ribeye hamburger biltong landjaeger beef ribs pork belly porchetta tri-tip. Corned 
-              beef leberkas cupim rump strip steak ground round ball tip tongue, shankle venison flank sirloin 
-              kielbasa bresaola. Hamburger picanha pork loin capicola salami pancetta. Boudin kielbasa shankle 
-              pig, beef ribs pancetta capicola porchetta spare ribs corned beef pork belly biltong sirloin short 
+            <p>Fatback pig ribeye hamburger biltong landjaeger beef ribs pork belly porchetta tri-tip. Corned
+              beef leberkas cupim rump strip steak ground round ball tip tongue, shankle venison flank sirloin
+              kielbasa bresaola. Hamburger picanha pork loin capicola salami pancetta. Boudin kielbasa shankle
+              pig, beef ribs pancetta capicola porchetta spare ribs corned beef pork belly biltong sirloin short
               loin. Pig hamburger landjaeger meatball boudin, tail flank kevin filet mignon ribeye fatback.
             </p>
             <p>
@@ -184,4 +120,4 @@ label: Inbox
       </div>
     </div>
   </div>
-
+</div>
