@@ -1,6 +1,6 @@
-module Pages.Counter.Update exposing (update, Msg(..))
+module Pages.Inbox.Update exposing (update, Msg(..))
 
-import Pages.Counter.Model as Counter exposing (..)
+import Pages.Inbox.Model as Inbox exposing (..)
 
 
 init : ( Model, Cmd Msg )

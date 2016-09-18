@@ -6,37 +6,32 @@ import Html.App as Html
 import Html.Events exposing (onClick)
 import App.Model exposing (..)
 import App.Update exposing (..)
-import Pages.Counter.View exposing (..)
+import Pages.Inbox.View exposing (..)
 import Pages.PageNotFound.View exposing (..)
 
 
 view : Model -> Html Msg
 view model =
     div []
-        [ div [ class "ui container main" ]
-            [ viewHeader model
-            , viewMainContent model
-            , pre [ class "ui padded secondary segment" ]
-                [ div [] [ text <| "activePage: " ++ toString model.activePage ]
-                , div [] [ text <| "pageCounter: " ++ toString model.pageCounter ]
-                ]
-            ]
-        , viewFooter
+        [ viewHeader model
+        , viewMainContent model
         ]
 
 
 viewHeader : Model -> Html Msg
 viewHeader model =
-    div [ class "ui secondary pointing menu" ] (navbarAnonymous model)
+    div [ class "ui container" ]
+        [ div [ class "ui secondary pointing menu" ] (navbarAnonymous model)
+        ]
 
 
 navbarAnonymous : Model -> List (Html Msg)
 navbarAnonymous model =
     [ a
-        [ classByPage Counter model.activePage
-        , onClick <| SetActivePage Counter
+        [ classByPage Inbox model.activePage
+        , onClick <| SetActivePage Inbox
         ]
-        [ text "Counter" ]
+        [ text "Inbox" ]
     , viewPageNotFoundItem model.activePage
     ]
 
@@ -53,8 +48,8 @@ viewPageNotFoundItem activePage =
 viewMainContent : Model -> Html Msg
 viewMainContent model =
     case model.activePage of
-        Counter ->
-            Html.map PageCounter (Pages.Counter.View.view model.pageCounter)
+        Inbox ->
+            Html.map PageInbox (Pages.Inbox.View.view model.pageInbox)
 
         PageNotFound ->
             -- We don't need to pass any cmds, so we can call the view directly

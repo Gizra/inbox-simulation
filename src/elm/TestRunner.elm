@@ -1,13 +1,13 @@
 module Main exposing (..)
 
 import ElmTest exposing (..)
-import Pages.Counter.Test as Counter exposing (all)
+import Pages.Inbox.Test as Inbox exposing (all)
 
 
 allTests : Test
 allTests =
     suite "All tests"
-        [ Counter.all
+        [ Inbox.all
         ]
 
 
