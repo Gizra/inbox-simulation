@@ -1,15 +1,19 @@
-module Pages.Inbox.Model exposing (emptyModel, Model)
-
-import Email.Model exposing (..)
+module Email.Model exposing (..)
 
 
-type alias Model =
-    { emails : List Email }
+type alias Email =
+    { from : String
+    , email : String
+    , subject : String
+    , teaser : String
+    , body : String
+    , options : List EmailOption
+    }
 
 
-emptyModel : Model
-emptyModel =
-    { emails = emails
+type alias EmailOption =
+    { option : String
+    , score : Int
     }
 
 
