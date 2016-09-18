@@ -1,4 +1,4 @@
-module Pages.Counter.Model exposing (emptyModel, Model)
+module Pages.Inbox.Model exposing (emptyModel, Model)
 
 -- MODEL
 

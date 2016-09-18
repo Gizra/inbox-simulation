@@ -1,11 +1,11 @@
 module App.Update exposing (init, update, Msg(..))
 
 import App.Model exposing (..)
-import Pages.Counter.Update exposing (Msg)
+import Pages.Inbox.Update exposing (Msg)
 
 
 type Msg
-    = PageCounter Pages.Counter.Update.Msg
+    = PageInbox Pages.Inbox.Update.Msg
     | SetActivePage Page
 
 
@@ -17,15 +17,15 @@ init =
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        PageCounter msg ->
+        PageInbox msg ->
             let
                 ( val, cmds ) =
-                    Pages.Counter.Update.update msg model.pageCounter
+                    Pages.Inbox.Update.update msg model.pageInbox
 
                 model' =
-                    { model | pageCounter = val }
+                    { model | pageInbox = val }
             in
-                ( model', Cmd.map PageCounter cmds )
+                ( model', Cmd.map PageInbox cmds )
 
         SetActivePage page ->
             { model | activePage = page } ! []

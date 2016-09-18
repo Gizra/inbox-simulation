@@ -1,10 +1,10 @@
-module Pages.Counter.View exposing (view)
+module Pages.Inbox.View exposing (view)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
-import Pages.Counter.Model exposing (..)
-import Pages.Counter.Update exposing (..)
+import Pages.Inbox.Model exposing (..)
+import Pages.Inbox.Update exposing (..)
 
 
 view : Model -> Html Msg
