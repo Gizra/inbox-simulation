@@ -150,7 +150,7 @@ viewMailItem ( name, email ) =
         , div [ class "content__messages__list__item" ]
             [ a
                 [ class "content__messages__list__item__from"
-                , (onClick <| SetActiveEmail <| Just name)
+                , (onClick <| SetSelectedEmail <| Just name)
                 ]
                 [ text email.from ]
             , div [ class "content__messages__list__item__subject" ]

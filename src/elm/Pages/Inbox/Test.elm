@@ -5,32 +5,21 @@ import Pages.Inbox.Model as Inbox exposing (emptyModel, Model)
 import Pages.Inbox.Update as Inbox exposing (..)
 
 
-decrementActionSuite : Test
-decrementActionSuite =
-    suite "Decrement action"
-        [ test "negative count" (assertEqual -2 (updateInbox Inbox.Decrement -1))
-        , test "zero count" (assertEqual -1 (updateInbox Inbox.Decrement 0))
-        , test "positive count" (assertEqual 0 (updateInbox Inbox.Decrement 1))
+setActiveEmail : Test
+setActiveEmail =
+    suite "setActiveEmail action"
+        [ test "no active email" (assertEqual Nothing (.selectedEmail <| updateInbox <| Inbox.SetSelectedEmail Nothing))
+        , test "active email" (assertEqual (Just "Vacation") (.selectedEmail <| updateInbox <| Inbox.SetSelectedEmail <| Just "Vacation"))
         ]
 
 
-incrementActionSuite : Test
-incrementActionSuite =
-    suite "Increment action"
-        [ test "negative count" (assertEqual 0 (updateInbox Inbox.Increment -1))
-        , test "zero count" (assertEqual 1 (updateInbox Inbox.Increment 0))
-        , test "positive count" (assertEqual 2 (updateInbox Inbox.Increment 1))
-        ]
-
-
-updateInbox : Inbox.Msg -> Int -> Inbox.Model
-updateInbox action initialModel =
-    fst <| Inbox.update action initialModel
+updateInbox : Inbox.Msg -> Inbox.Model
+updateInbox action =
+    fst <| Inbox.update action emptyModel
 
 
 all : Test
 all =
     suite "Inbox tests"
-        [ decrementActionSuite
-        , incrementActionSuite
+        [ setActiveEmail
         ]

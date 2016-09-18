@@ -10,11 +10,11 @@ init =
 
 
 type Msg
-    = SetActiveEmail (Maybe EmailType)
+    = SetSelectedEmail (Maybe EmailType)
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update action model =
     case action of
-        SetActiveEmail name ->
+        SetSelectedEmail name ->
             { model | selectedEmail = name } ! []
