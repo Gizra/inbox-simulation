@@ -11,12 +11,29 @@ import Email.Model exposing (..)
 
 view : Model -> Html Msg
 view model =
+    let
+        _ = getScore model
+    in
     div [ class "ui container" ]
         [ viewNavbar model
         , viewMain model
         , pre [] [text <| toString model.emailsStatus]
         ]
 
+
+-- getScore : Model -> Int
+getScore model =
+    let
+      f emailType answerIndex =
+          case (Dict.get emailType model.emails) of
+              Nothing -> 0
+              Just email ->
+                  case (Dict.get answerIndex email.options) of
+                      Nothing -> 0
+                      Just option ->
+                          option.score
+    in
+        Dict.map f model.emailsStatus
 
 viewNavbar : Model -> Html Msg
 viewNavbar model =
