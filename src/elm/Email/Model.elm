@@ -16,6 +16,6 @@ type alias Email =
 
 
 type alias EmailOption =
-    { option : String
+    { label : String
     , score : Int
     }

@@ -179,7 +179,8 @@ viewSelectedEmail model =
                     Just email ->
                         div [ class "content__messages__selected" ]
                             [ div [ class "content__messages__selected__header" ]
-                                [ div [ class "content__messages__selected__header_title" ]
+                                [ div [] (List.map viewShowOption email.options)
+                                , div [ class "content__messages__selected__header_title" ]
                                     [ text email.subject ]
                                 , div [ class "content__messages__selected__header_sender" ]
                                     [ text email.from ]
@@ -199,3 +200,13 @@ viewSelectedEmail model =
                                 [ text email.body
                                 ]
                             ]
+
+
+viewShowOption : EmailOption -> Html Msg
+viewShowOption option =
+    div []
+        [ label []
+            [ input [ type' "radio" ] []
+            , text option.label
+            ]
+        ]
