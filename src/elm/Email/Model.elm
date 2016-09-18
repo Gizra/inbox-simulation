@@ -1,9 +1,8 @@
 module Email.Model exposing (..)
 
 
-type EmailType
-    = Urgent
-    | Vacation
+type alias EmailType =
+    String
 
 
 type alias Email =

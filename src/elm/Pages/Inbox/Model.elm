@@ -5,8 +5,8 @@ import Email.Model exposing (..)
 
 
 type alias Model =
-    { emails : Dict String Email
-    , selectedEmail : Maybe Int
+    { emails : Dict EmailType Email
+    , selectedEmail : Maybe EmailType
     }
 
 
@@ -21,7 +21,7 @@ emptyModel =
 -- @todo: Get mail from JSON file
 
 
-emails : List ( String, Email )
+emails : List ( EmailType, Email )
 emails =
     [ ( "Urgent"
       , { from = "Adam Stewart"
