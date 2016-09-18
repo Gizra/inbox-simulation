@@ -1,10 +1,13 @@
 module Pages.Inbox.View exposing (view)
 
+import Dict exposing (..)
 import Html exposing (..)
+import Html.App as Html
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 import Pages.Inbox.Model exposing (..)
 import Pages.Inbox.Update exposing (..)
+import Email.Model exposing (..)
 
 
 view : Model -> Html Msg
@@ -128,62 +131,71 @@ viewMain model =
                 , div [ class "content__messages" ]
                     [ div [ class "content__messages__list" ]
                         [ div [ class "ui relaxed divided list" ]
-                            [ viewMailItem
-                            , viewMailItem
-                            , viewMailItem
-                            , viewMailItem
-                            ]
+                            (List.map viewMailItem <| Dict.toList model.emails)
                         ]
-                    , div [ class "content__messages__selected" ]
-                        [ div [ class "content__messages__selected__header" ]
-                            [ div [ class "content__messages__selected__header_title" ]
-                                [ text "Urgent needs attention" ]
-                            , div [ class "content__messages__selected__header_sender" ]
-                                [ text "Adam Stewart", text "<", text "adam@gizra.com", text ">" ]
-                            , div [ class "content__messages__selected__header__reply" ]
-                                [ div [ class "content__messages__selected__header__reply_all" ]
-                                    [ i [ class "reply all icon" ]
-                                        []
-                                    , text "Reply All"
-                                    , i [ class "angle down icon" ]
-                                        []
-                                    ]
-                                ]
-                            , div [ class "content__messages__selected__header_date" ]
-                                [ text "Tue 9/13/2016 10:26 AM" ]
-                            ]
-                        , div [ class "content__messages__selected__content" ]
-                            [ p []
-                                [ text "Adam," ]
-                            , p []
-                                [ text "Bacon ipsum dolor amet ham hock short loin shoulder capicola landjaeger sirloin beef ribs. Shank rump leberkas picanha kevin jerky. Ground round short loin shank, tail beef ribs doner pig flank cupim. Pig ham venison tongue alcatra\n                                andouille sirloin pancetta bresaola leberkas. Kielbasa meatball alcatra pork shoulder prosciutto pancetta landjaeger short loin shankle andouille. Ham hock short ribs pork belly venison drumstick landjaeger chicken rump fatback\n                                doner kevin. Boudin tongue andouille turducken." ]
-                            , p []
-                                [ text "Shankle doner filet mignon rump picanha. Pastrami t-bone pork loin sausage. Turducken spare ribs alcatra, sausage sirloin short loin kielbasa ribeye. Tongue tri-tip jerky chicken filet mignon, tail hamburger turkey venison shankle\n                                pig ham capicola kevin." ]
-                            , p []
-                                [ text "Fatback pig ribeye hamburger biltong landjaeger beef ribs pork belly porchetta tri-tip. Corned beef leberkas cupim rump strip steak ground round ball tip tongue, shankle venison flank sirloin kielbasa bresaola. Hamburger picanha\n                                pork loin capicola salami pancetta. Boudin kielbasa shankle pig, beef ribs pancetta capicola porchetta spare ribs corned beef pork belly biltong sirloin short loin. Pig hamburger landjaeger meatball boudin, tail flank kevin\n                                filet mignon ribeye fatback." ]
-                            , p []
-                                [ text "Adam" ]
-                            ]
-                        ]
+                    , (viewSelectedEmail model)
                     ]
                 ]
             ]
         ]
 
 
-viewMailItem : Html Msg
-viewMailItem =
+viewMailItem : ( String, Email ) -> Html Msg
+viewMailItem ( name, email ) =
     div [ class "item" ]
         [ div [ class "content__messages__list__checkbox" ]
             [ input [ type' "checkbox" ]
                 []
             ]
         , div [ class "content__messages__list__item" ]
-            [ div [ class "content__messages__list__item__from" ]
-                [ text "Adam Stewart" ]
+            [ a
+                [ class "content__messages__list__item__from"
+                , (onClick <| SetSelectedEmail <| Just name)
+                ]
+                [ text email.from ]
             , div [ class "content__messages__list__item__subject" ]
-                [ text "Urgent needs attention" ]
+                [ text email.subject ]
             , div [ class "content__messages__list__item__content" ]
-                [ text "Can we get an update on the latest version of the document." ]
+                [ text email.teaser ]
             ]
         ]
+
+
+viewSelectedEmail : Model -> Html Msg
+viewSelectedEmail model =
+    case model.selectedEmail of
+        Nothing ->
+            div [] []
+
+        Just name ->
+            let
+                memail =
+                    Dict.get name model.emails
+            in
+                case memail of
+                    Nothing ->
+                        div [] []
+
+                    Just email ->
+                        div [ class "content__messages__selected" ]
+                            [ div [ class "content__messages__selected__header" ]
+                                [ div [ class "content__messages__selected__header_title" ]
+                                    [ text email.subject ]
+                                , div [ class "content__messages__selected__header_sender" ]
+                                    [ text email.from ]
+                                , div [ class "content__messages__selected__header__reply" ]
+                                    [ div [ class "content__messages__selected__header__reply_all" ]
+                                        [ i [ class "reply all icon" ]
+                                            []
+                                        , text "Reply All"
+                                        , i [ class "angle down icon" ]
+                                            []
+                                        ]
+                                    ]
+                                , div [ class "content__messages__selected__header_date" ]
+                                    [ text "Tue 9/13/2016 10:26 AM" ]
+                                ]
+                            , div [ class "content__messages__selected__content" ]
+                                [ text email.body
+                                ]
+                            ]
