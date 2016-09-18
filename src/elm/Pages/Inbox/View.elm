@@ -179,7 +179,7 @@ viewSelectedEmail model =
                     Just email ->
                         div [ class "content__messages__selected" ]
                             [ div [ class "content__messages__selected__header" ]
-                                [ div [ class "ui form" ]
+                                [ div [ class "ui form segment" ]
                                     [ div [ class "grouped fields" ]
                                         [ label [] [ text "What should you do next?" ]
                                         , div [] (List.map viewShowOption email.options)
