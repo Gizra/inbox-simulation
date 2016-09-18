@@ -1,1 +1,120 @@
 // SCSS goes here.
+
+body {
+  font-family: 'Open Sans';
+}
+
+.main {
+  display: flex;
+  height: 75vh;
+}
+
+.content {
+  flex-basis: 100%;
+}
+
+.content__messages {
+  display: flex;
+  height: 100%;
+
+}
+
+.top__menu {
+  font-size: 20px !important;
+}
+.microsoft_logo {
+  background-color: #0078D7 !important; 
+}
+
+.content__messages__list {
+  flex: 1 0 40%;
+  border-right: 1px solid #000000;
+  height: auto;
+  overflow-y: scroll;
+}
+.content__messages__selected {
+  flex: 2 0 57%;
+  overflow-y: scroll;
+}
+
+.sidebar_left {
+  flex-basis: 25%;
+  background-color: #f4f4f4;
+}
+
+.sidebar_left__search {
+  padding-left: 10px;
+  padding-top: 10px;
+  background-color: #DEECF9;
+  height: 40px;
+}
+
+.sidebar_left__folders {
+  background-color: #f4f4f4;
+}
+
+.content__toolbar {
+  background-color: #EFF6FC;
+  height: 40px;
+}
+
+.content__messages__list__checkbox {
+  margin-top: 5px;
+  margin-left: 5px;
+  float: left;
+}
+.content__messages__list__item {
+  margin-left: 20px;
+  margin-right: 5px;
+  float: left;
+}
+
+.content__messages__list__item__from, 
+.content__messages__list__item__subject,  
+.content__messages__list__item__content {
+  margin-top: 5px;
+  max-width: 300px;
+  max-height: 1.5em;
+  overflow: hidden  
+}
+
+.content__messages__list__item__from {
+  font-size: 16px;
+}
+
+.content__messages__list__item__subject {
+  font-size: 12px;
+}
+
+.content__messages__list__item__content {
+  font-size: 12px;
+  font-weight: 300;  
+}
+
+.content__messages__selected {
+  margin: 20px;
+}
+
+.content__messages__selected__header_title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.content__messages__selected__header_sender {
+  margin-bottom: 10px;
+}
+
+.content__messages__selected__header_date {
+  font-size: 12px;
+}
+
+.content__messages__selected__header__reply_all {
+  float: right;
+  display: block;
+  background-color: #EFF6FC;
+  padding: 5px 10px;
+}
+
+.content__messages__selected__content {
+  margin-top: 30px;
+}
