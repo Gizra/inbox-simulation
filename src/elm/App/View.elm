@@ -13,21 +13,16 @@ import Pages.PageNotFound.View exposing (..)
 view : Model -> Html Msg
 view model =
     div []
-        [ div [ class "ui container main" ]
-            [ viewHeader model
-            , viewMainContent model
-            , pre [ class "ui padded secondary segment" ]
-                [ div [] [ text <| "activePage: " ++ toString model.activePage ]
-                , div [] [ text <| "pageCounter: " ++ toString model.pageCounter ]
-                ]
-            ]
-        , viewFooter
+        [ viewHeader model
+        , viewMainContent model
         ]
 
 
 viewHeader : Model -> Html Msg
 viewHeader model =
-    div [ class "ui secondary pointing menu" ] (navbarAnonymous model)
+    div [ class "ui container" ]
+        [ div [ class "ui secondary pointing menu" ] (navbarAnonymous model)
+        ]
 
 
 navbarAnonymous : Model -> List (Html Msg)
