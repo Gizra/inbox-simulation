@@ -1,5 +1,6 @@
 module Pages.Inbox.View exposing (view)
 
+import Dict exposing (..)
 import Html exposing (..)
 import Html.App as Html
 import Html.Attributes exposing (..)
@@ -130,7 +131,7 @@ viewMain model =
                 , div [ class "content__messages" ]
                     [ div [ class "content__messages__list" ]
                         [ div [ class "ui relaxed divided list" ]
-                            (List.map viewMailItem model.emails)
+                            (List.map viewMailItem <| Dict.values model.emails)
                         ]
                     , div [ class "content__messages__selected" ]
                         [ div [ class "content__messages__selected__header" ]

@@ -1,15 +1,19 @@
 module Pages.Inbox.Model exposing (emptyModel, Model)
 
+import Dict exposing (..)
 import Email.Model exposing (..)
 
 
 type alias Model =
-    { emails : List Email }
+    { emails : Dict String Email
+    , selectedEmail : Maybe Int
+    }
 
 
 emptyModel : Model
 emptyModel =
-    { emails = emails
+    { emails = Dict.fromList emails
+    , selectedEmail = Nothing
     }
 
 
@@ -17,13 +21,14 @@ emptyModel =
 -- @todo: Get mail from JSON file
 
 
-emails : List Email
+emails : List ( String, Email )
 emails =
-    [ { from = "Adam Stewart"
-      , email = "<adam@gizra.com>"
-      , subject = "Urgent needs attention"
-      , teaser = "Can we get an update on the latest version of the"
-      , body =
+    [ ( "Urgent"
+      , { from = "Adam Stewart"
+        , email = "<adam@gizra.com>"
+        , subject = "Urgent needs attention"
+        , teaser = "Can we get an update on the latest version of the"
+        , body =
             """
             Adam,
 
@@ -35,26 +40,29 @@ Fatback pig ribeye hamburger biltong landjaeger beef ribs pork belly porchetta t
 
 Adam
             """
-      , options =
+        , options =
             [ EmailOption "Run screaming" 10
             , EmailOption "Forward to manager" 50
             , EmailOption "BCC all" 100
             ]
-      }
-    , { from = "Adar Aeron"
-      , email = "<adar@gizra.com>"
-      , subject = "Company holiday"
-      , teaser = "Hi folks, It's the holidays season"
-      , body =
+        }
+      )
+    , ( "Vacation"
+      , { from = "Adar Aeron"
+        , email = "<adar@gizra.com>"
+        , subject = "Company holiday"
+        , teaser = "Hi folks, It's the holidays season"
+        , body =
             """
               Hi folks,
 
 It's the holidays season, and we want some holidays
               """
-      , options =
+        , options =
             [ EmailOption "Subscribe" 10
             , EmailOption "Ignore" 50
             , EmailOption "Forward to everybody" 100
             ]
-      }
+        }
+      )
     ]
