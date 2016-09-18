@@ -13,7 +13,7 @@ type alias Model =
 emptyModel : Model
 emptyModel =
     { emails = Dict.fromList emails
-    , selectedEmail = Nothing
+    , selectedEmail = Just "Urgent"
     }
 
 

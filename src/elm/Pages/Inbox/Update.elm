@@ -27,7 +27,7 @@ update action model =
                         Just val ->
                             case name of
                                 Nothing ->
-                                    Just val
+                                    name
 
                                 Just val' ->
                                     if val == val' then
