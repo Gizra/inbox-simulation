@@ -41,4 +41,20 @@ Adam
             , EmailOption "BCC all" 100
             ]
       }
+    , { from = "Adar Aeron"
+      , email = "<adar@gizra.com>"
+      , subject = "Company holiday"
+      , teaser = "Hi folks, It's the holidays season"
+      , body =
+            """
+              Hi folks,
+
+It's the holidays season, and we want some holidays
+              """
+      , options =
+            [ EmailOption "Subscribe" 10
+            , EmailOption "Ignore" 50
+            , EmailOption "Forward to everybody" 100
+            ]
+      }
     ]
