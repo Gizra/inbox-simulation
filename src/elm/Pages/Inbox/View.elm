@@ -179,7 +179,12 @@ viewSelectedEmail model =
                     Just email ->
                         div [ class "content__messages__selected" ]
                             [ div [ class "content__messages__selected__header" ]
-                                [ div [] (List.map viewShowOption email.options)
+                                [ div [ class "ui form" ]
+                                    [ div [ class "grouped fields" ]
+                                        [ label [] [ text "What should you do next?" ]
+                                        , div [] (List.map viewShowOption email.options)
+                                        ]
+                                    ]
                                 , div [ class "content__messages__selected__header_title" ]
                                     [ text email.subject ]
                                 , div [ class "content__messages__selected__header_sender" ]
@@ -204,9 +209,11 @@ viewSelectedEmail model =
 
 viewShowOption : EmailOption -> Html Msg
 viewShowOption option =
-    div []
-        [ label []
-            [ input [ type' "radio" ] []
-            , text option.label
+    div [ class "field" ]
+        [ div [ class "ui radio checkbox" ]
+            [ input [ type' "radio", name "radio" ]
+                []
+            , label []
+                [ text option.label ]
             ]
         ]
