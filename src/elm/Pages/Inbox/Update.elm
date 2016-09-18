@@ -1,5 +1,6 @@
 module Pages.Inbox.Update exposing (update, Msg(..))
 
+import Dict exposing (..)
 import Email.Model exposing (..)
 import Pages.Inbox.Model as Inbox exposing (..)
 
@@ -10,12 +11,18 @@ init =
 
 
 type Msg
-    = SetSelectedEmail (Maybe EmailType)
+    = SetEmailStatus EmailType Int
+    | SetSelectedEmail (Maybe EmailType)
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update action model =
     case action of
+        SetEmailStatus name score ->
+            let
+                emailsStatus = Dict.insert name score model.emailsStatus
+            in
+                {model | emailsStatus = emailsStatus } ! []
         SetSelectedEmail name ->
             -- If same email is selected, we un-select the emails.
             let
@@ -34,5 +41,21 @@ update action model =
                                         Nothing
                                     else
                                         Just val'
+                -- Set email status
+                emailsStatus = case name of
+                    Nothing -> model.emailsStatus
+                    Just val ->
+                        case (Dict.get val model.emailsStatus) of
+                            Nothing ->
+                                let
+                                  model' = fst <| update (SetEmailStatus val 0) model
+                                in
+                                    model'.emailsStatus
+                            Just _ ->
+                                model.emailsStatus
+
+
             in
-                { model | selectedEmail = selectedEmail } ! []
+                { model | selectedEmail = selectedEmail
+                , emailsStatus = emailsStatus
+                } ! []
