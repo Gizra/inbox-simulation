@@ -1,8 +1,12 @@
 module Email.Model exposing (..)
 
+import Dict exposing (..)
+
 
 type alias EmailType =
     String
+
+type alias EmailsStatus = Dict EmailType Int
 
 
 type alias Email =
@@ -11,7 +15,7 @@ type alias Email =
     , subject : String
     , teaser : String
     , body : String
-    , options : List EmailOption
+    , options : Dict Int EmailOption
     }
 
 

@@ -2,7 +2,6 @@ module Pages.Inbox.View exposing (view)
 
 import Dict exposing (..)
 import Html exposing (..)
-import Html.App as Html
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 import Pages.Inbox.Model exposing (..)
@@ -15,6 +14,7 @@ view model =
     div [ class "ui container" ]
         [ viewNavbar model
         , viewMain model
+        , pre [] [text <| toString model.emailsStatus]
         ]
 
 
@@ -182,7 +182,7 @@ viewSelectedEmail model =
                                 [ div [ class "ui form segment" ]
                                     [ div [ class "grouped fields" ]
                                         [ label [] [ text "What should you do next?" ]
-                                        , div [] (List.map viewShowOption email.options)
+                                        , div [] (List.map (viewShowOption name model.emailsStatus) <| Dict.toList email.options)
                                         ]
                                     ]
                                 , div [ class "content__messages__selected__header_title" ]
@@ -207,13 +207,25 @@ viewSelectedEmail model =
                             ]
 
 
-viewShowOption : EmailOption -> Html Msg
-viewShowOption option =
-    div [ class "field" ]
-        [ div [ class "ui radio checkbox" ]
-            [ input [ type' "radio", name "radio" ]
-                []
-            , label []
-                [ text option.label ]
+viewShowOption : EmailType -> EmailsStatus -> (Int, EmailOption) -> Html Msg
+viewShowOption emailType emailsStatus (optionId, option) =
+    let
+      isChecked =
+          case (Dict.get emailType emailsStatus) of
+              Nothing -> False
+              Just index ->
+                  optionId == index
+
+    in
+        div [ class "field" ]
+            [ div [ class "ui radio checkbox" ]
+                [ input [ type' "radio"
+                , name "radio"
+                , checked isChecked
+                , onClick <| SetEmailStatus emailType optionId
+                ]
+                    []
+                , label []
+                    [ text option.label ]
+                ]
             ]
-        ]
