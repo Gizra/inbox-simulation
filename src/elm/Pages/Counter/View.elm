@@ -128,7 +128,11 @@ viewMain model =
                 , div [ class "content__messages" ]
                     [ div [ class "content__messages__list" ]
                         [ div [ class "ui relaxed divided list" ]
-                            [ text "include mail_item.html" ]
+                            [ viewMailItem
+                            , viewMailItem
+                            , viewMailItem
+                            , viewMailItem
+                            ]
                         ]
                     , div [ class "content__messages__selected" ]
                         [ div [ class "content__messages__selected__header" ]
@@ -163,5 +167,23 @@ viewMain model =
                         ]
                     ]
                 ]
+            ]
+        ]
+
+
+viewMailItem : Html Msg
+viewMailItem =
+    div [ class "item" ]
+        [ div [ class "content__messages__list__checkbox" ]
+            [ input [ type' "checkbox" ]
+                []
+            ]
+        , div [ class "content__messages__list__item" ]
+            [ div [ class "content__messages__list__item__from" ]
+                [ text "Adam Stewart" ]
+            , div [ class "content__messages__list__item__subject" ]
+                [ text "Urgent needs attention" ]
+            , div [ class "content__messages__list__item__content" ]
+                [ text "Can we get an update on the latest version of the document." ]
             ]
         ]
