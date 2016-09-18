@@ -17,23 +17,26 @@ view model =
     div [ class "ui container" ]
         [ viewNavbar model
         , viewMain model
-        , pre [] [text <| toString model.emailsStatus]
+        , pre []
+        [ text <| toString model.emailsStatus
+        , text <| toString <| getScore model
+        ]
         ]
 
 
--- getScore : Model -> Int
+getScore : Model -> Int
 getScore model =
     let
-      f emailType answerIndex =
+      f emailType answerIndex total =
           case (Dict.get emailType model.emails) of
               Nothing -> 0
               Just email ->
                   case (Dict.get answerIndex email.options) of
                       Nothing -> 0
                       Just option ->
-                          option.score
+                          option.score + total
     in
-        Dict.map f model.emailsStatus
+        Dict.foldl f 0 model.emailsStatus
 
 viewNavbar : Model -> Html Msg
 viewNavbar model =
