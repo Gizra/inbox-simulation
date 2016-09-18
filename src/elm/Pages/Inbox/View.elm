@@ -1,10 +1,12 @@
 module Pages.Inbox.View exposing (view)
 
 import Html exposing (..)
+import Html.App as Html
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 import Pages.Inbox.Model exposing (..)
 import Pages.Inbox.Update exposing (..)
+import Email.Model exposing (..)
 
 
 view : Model -> Html Msg
@@ -128,11 +130,7 @@ viewMain model =
                 , div [ class "content__messages" ]
                     [ div [ class "content__messages__list" ]
                         [ div [ class "ui relaxed divided list" ]
-                            [ viewMailItem
-                            , viewMailItem
-                            , viewMailItem
-                            , viewMailItem
-                            ]
+                            (List.map viewMailItem model.emails)
                         ]
                     , div [ class "content__messages__selected" ]
                         [ div [ class "content__messages__selected__header" ]
@@ -171,8 +169,8 @@ viewMain model =
         ]
 
 
-viewMailItem : Html Msg
-viewMailItem =
+viewMailItem : Email -> Html Msg
+viewMailItem email =
     div [ class "item" ]
         [ div [ class "content__messages__list__checkbox" ]
             [ input [ type' "checkbox" ]
@@ -180,10 +178,10 @@ viewMailItem =
             ]
         , div [ class "content__messages__list__item" ]
             [ div [ class "content__messages__list__item__from" ]
-                [ text "Adam Stewart" ]
+                [ text email.from ]
             , div [ class "content__messages__list__item__subject" ]
-                [ text "Urgent needs attention" ]
+                [ text email.subject ]
             , div [ class "content__messages__list__item__content" ]
-                [ text "Can we get an update on the latest version of the document." ]
+                [ text email.teaser ]
             ]
         ]
