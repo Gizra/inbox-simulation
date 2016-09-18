@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Gizra/boa-inbox.svg?branch=master)](https://travis-ci.org/Gizra/boa-inbox)
+[![Build Status](https://travis-ci.com/Gizra/boa-inbox.svg?token=p2M1EeCrd3dY32WxWj3X&branch=master)](https://travis-ci.com/Gizra/boa-inbox)
 
 > boa-inbox
 
