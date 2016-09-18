@@ -131,7 +131,7 @@ viewMain model =
                 , div [ class "content__messages" ]
                     [ div [ class "content__messages__list" ]
                         [ div [ class "ui relaxed divided list" ]
-                            (List.map viewMailItem <| Dict.values model.emails)
+                            (List.map viewMailItem <| Dict.toList model.emails)
                         ]
                     , div [ class "content__messages__selected" ]
                         [ div [ class "content__messages__selected__header" ]
@@ -170,15 +170,18 @@ viewMain model =
         ]
 
 
-viewMailItem : Email -> Html Msg
-viewMailItem email =
+viewMailItem : ( String, Email ) -> Html Msg
+viewMailItem ( name, email ) =
     div [ class "item" ]
         [ div [ class "content__messages__list__checkbox" ]
             [ input [ type' "checkbox" ]
                 []
             ]
         , div [ class "content__messages__list__item" ]
-            [ div [ class "content__messages__list__item__from" ]
+            [ a
+                [ class "content__messages__list__item__from"
+                , (onClick <| SetActiveEmail <| Just name)
+                ]
                 [ text email.from ]
             , div [ class "content__messages__list__item__subject" ]
                 [ text email.subject ]

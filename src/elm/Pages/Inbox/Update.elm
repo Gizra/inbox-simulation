@@ -1,5 +1,6 @@
 module Pages.Inbox.Update exposing (update, Msg(..))
 
+import Email.Model exposing (..)
 import Pages.Inbox.Model as Inbox exposing (..)
 
 
@@ -9,11 +10,11 @@ init =
 
 
 type Msg
-    = NoOp
+    = SetActiveEmail (Maybe EmailType)
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update action model =
     case action of
-        NoOp ->
-            model ! []
+        SetActiveEmail name ->
+            { model | selectedEmail = name } ! []
