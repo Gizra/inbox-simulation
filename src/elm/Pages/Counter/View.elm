@@ -86,18 +86,18 @@ viewMain model =
                     [ div [ class "ui secondary menu" ]
                         [ a [ class "ui item" ]
                             [ i [ class "plus square outline icon" ]
-                                [ text "New"
-                                ]
+                                []
+                            , text "New"
                             ]
                         , a [ class "ui item" ]
                             [ i [ class "trash outline icon" ]
-                                [ text "Delete"
-                                ]
+                                []
+                            , text "Delete"
                             ]
                         , a [ class "ui item" ]
                             [ i [ class "archive icon" ]
-                                [ text "Archive"
-                                ]
+                                []
+                            , text "Archive"
                             ]
                         , a [ class "ui item" ]
                             [ text "Junk"
@@ -119,8 +119,8 @@ viewMain model =
                         , div [ class "ui right secondary menu" ]
                             [ a [ class "ui item" ]
                                 [ i [ class "undo icon" ]
-                                    [ text "Undo"
-                                    ]
+                                    []
+                                , text "Undo"
                                 ]
                             ]
                         ]
@@ -143,8 +143,8 @@ viewMain model =
                             , div [ class "content__messages__selected__header__reply" ]
                                 [ div [ class "content__messages__selected__header__reply_all" ]
                                     [ i [ class "reply all icon" ]
-                                        [ text "Reply All"
-                                        ]
+                                        []
+                                    , text "Reply All"
                                     , i [ class "angle down icon" ]
                                         []
                                     ]
