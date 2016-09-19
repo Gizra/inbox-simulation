@@ -7,6 +7,7 @@ import Email.Model exposing (..)
 type alias Model =
     { emails : Dict EmailType Email
     , selectedEmail : Maybe EmailType
+    , shownEmails : List EmailType
     , emailsStatus : EmailsStatus
     }
 
@@ -15,8 +16,19 @@ emptyModel : Model
 emptyModel =
     { emails = Dict.fromList emails
     , selectedEmail = Just "Urgent"
-    , emailsStatus = Dict.empty
+    , shownEmails = getImmediateEmails emails
+    , emailsStatus = Dict.insert "Urgent" 0 Dict.empty
     }
+
+
+
+-- Get only the emails that should be delivered "immediatly".
+
+
+getImmediateEmails : List ( EmailType, Email ) -> List EmailType
+getImmediateEmails emails =
+    List.filter (\( emailType, email ) -> email.emailDelivery == Immediate) emails
+        |> List.map fst
 
 
 
@@ -42,11 +54,12 @@ Fatback pig ribeye hamburger biltong landjaeger beef ribs pork belly porchetta t
 
 Adam
             """
+        , emailDelivery = Immediate
         , options =
             Dict.fromList
-                [ ( 1, EmailOption "Run screaming" 10 )
-                , ( 2, EmailOption "Forward to manager" 50 )
-                , ( 3, EmailOption "BCC all" 100 )
+                [ ( 1, EmailOption "Run screaming" 10 Nothing )
+                , ( 2, EmailOption "Forward to manager" 50 Nothing )
+                , ( 3, EmailOption "BCC all" 100 Nothing )
                 ]
         }
       )
@@ -61,11 +74,29 @@ Adam
 
 It's the holidays season, and we want some holidays
               """
+        , emailDelivery = Immediate
         , options =
             Dict.fromList
-                [ ( 1, EmailOption "Subscribe" 10 )
-                , ( 2, EmailOption "Ignore" 50 )
-                , ( 3, EmailOption "Forward to everybody" 100 )
+                [ ( 1, EmailOption "Subscribe" 15 Nothing )
+                , ( 2, EmailOption "Ignore" 55 <| Just "VacationIgnoreResponse" )
+                , ( 3, EmailOption "Forward to everybody" 75 Nothing )
+                ]
+        }
+      )
+    , ( "VacationIgnoreResponse"
+      , { from = "Adar Earon"
+        , email = "<adar@gizra.com>"
+        , subject = "Are you not coming?"
+        , teaser = "You are the only one..."
+        , body =
+            """
+You are the only one... Please reconsider
+          """
+        , emailDelivery = Delayed
+        , options =
+            Dict.fromList
+                [ ( 1, EmailOption "Approve" 15 Nothing )
+                , ( 2, EmailOption "Deny" 25 Nothing )
                 ]
         }
       )

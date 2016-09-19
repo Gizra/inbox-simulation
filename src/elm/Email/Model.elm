@@ -6,7 +6,14 @@ import Dict exposing (..)
 type alias EmailType =
     String
 
-type alias EmailsStatus = Dict EmailType Int
+
+type alias EmailsStatus =
+    Dict EmailType Int
+
+
+type EmailDelivery
+    = Delayed
+    | Immediate
 
 
 type alias Email =
@@ -15,6 +22,7 @@ type alias Email =
     , subject : String
     , teaser : String
     , body : String
+    , emailDelivery : EmailDelivery
     , options : Dict Int EmailOption
     }
 
@@ -22,4 +30,5 @@ type alias Email =
 type alias EmailOption =
     { label : String
     , score : Int
+    , triggerEmail : Maybe EmailType
     }

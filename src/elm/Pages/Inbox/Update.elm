@@ -3,6 +3,9 @@ module Pages.Inbox.Update exposing (update, Msg(..))
 import Dict exposing (..)
 import Email.Model exposing (..)
 import Pages.Inbox.Model as Inbox exposing (..)
+import Process exposing (sleep)
+import Task
+import Time exposing (Time, second)
 
 
 init : ( Model, Cmd Msg )
@@ -11,19 +14,47 @@ init =
 
 
 type Msg
-    = SetEmailStatus EmailType Int
+    = DeliverEmail EmailType
+    | SetEmailStatus EmailType Int
     | SetSelectedEmail (Maybe EmailType)
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update action model =
     case action of
-        SetEmailStatus emailType score ->
+        DeliverEmail emailType ->
+            -- Rebuild the dict, by appending the new email to the list.
+            let
+                shownEmails =
+                    emailType :: model.shownEmails
+            in
+                { model | shownEmails = shownEmails } ! []
+
+        SetEmailStatus emailType keyOption ->
             let
                 emailsStatus =
-                    Dict.insert emailType score model.emailsStatus
+                    Dict.insert emailType keyOption model.emailsStatus
+
+                cmd =
+                    case Dict.get emailType model.emails of
+                        Nothing ->
+                            []
+
+                        Just email ->
+                            case Dict.get keyOption email.options of
+                                Nothing ->
+                                    []
+
+                                Just option ->
+                                    case option.triggerEmail of
+                                        Nothing ->
+                                            []
+
+                                        Just emailType' ->
+                                            -- Sleep for 2 seconds, and send the triggered email.
+                                            [ Process.sleep (2 * 1000) |> Task.perform (always <| DeliverEmail emailType') (always <| DeliverEmail emailType') ]
             in
-                { model | emailsStatus = emailsStatus } ! []
+                { model | emailsStatus = emailsStatus } ! cmd
 
         SetSelectedEmail emailType ->
             -- If same email is selected, we un-select the emails.

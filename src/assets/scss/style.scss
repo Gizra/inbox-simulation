@@ -69,6 +69,10 @@ body {
   float: left;
 }
 
+.content__messages__list__item.not-opened {
+    font-weight: bold;
+}
+
 .content__messages__list__item__from,
 .content__messages__list__item__subject,
 .content__messages__list__item__content {
