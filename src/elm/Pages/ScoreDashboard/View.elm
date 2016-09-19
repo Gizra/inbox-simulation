@@ -12,5 +12,6 @@ import Pages.Inbox.Utils exposing (..)
 view : Model -> Html a
 view model =
     div [ class "ui container" ]
-        [ text <| toString <| getScore model
+        [ h2 [] [ text "Current score" ]
+        , text <| toString <| getScore model
         ]
