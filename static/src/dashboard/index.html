@@ -9,59 +9,27 @@ label: Dashboard
   <table class="ui very basic collapsing celled table">
     <thead>
       <tr>
-        <th>Employee</th>
+        <th rowspan="2">Employee</th>
+        <th rowspan="2">Overall Progress</th>
+        <th colspan="2">Inbox Simulation</th>
+        <th colspan="2">Leadership Assessment</th>
+        <th rowspan="2">Overall Score</th>
+      </tr>
+      <tr>
+        <th>Time to Complete</th>
+        <th>Score</th>
+        <th>Time to Complete</th>
         <th>Score</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>
-          <h4 class="ui image header">
-            <i class="user icon"></i>
-            <div class="content">
-              John Q. Smith
-              <div class="sub header">Human Resources</div>
-            </div>
-          </h4>
-        </td>
-        <td>22</td>
-      </tr>
-      <tr>
-        <td>
-          <h4 class="ui image header">
-            <i class="user icon"></i>
-            <div class="content">
-              Nora P. Jordan
-              <div class="sub header">Financial Service</div>
-            </div>
-          </h4>
-        </td>
-        <td>15</td>
-      </tr>
-      <tr>
-        <td>
-          <h4 class="ui image header">
-            <i class="user icon"></i>
-            <div class="content">
-              Michael R. Smith
-              <div class="sub header">Administration</div>
-            </div>
-          </h4>
-        </td>
-        <td>12</td>
-      </tr>
-      <tr>
-        <td>
-          <h4 class="ui image header">
-            <i class="user icon"></i>
-            <div class="content">
-              Janette Lewis
-              <div class="sub header">Executive</div>
-            </div>
-          </h4>
-        </td>
-        <td>11</td>
-      </tr>
+      {%include user_row.html %}
+      {%include user_row.html %}
+      {%include user_row.html %}
+      {%include user_row.html %}
+      {%include user_row.html %}
+      {%include user_row.html %}
+      {%include user_row.html %}
     </tbody>
   </table>  
 </div>
