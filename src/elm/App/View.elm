@@ -16,6 +16,7 @@ view model =
     div []
         [ viewHeader model
         , viewMainContent model
+        , viewFooter
         ]
 
 
@@ -77,7 +78,7 @@ viewFooter =
                 [ text "Gizra" ]
             , span [] [ text " // " ]
             , a
-                [ href "https://github.com/Gizra/elm-spa-example"
+                [ href "https://github.com/Gizra/inbox-training"
                 , target "_blank"
                 ]
                 [ text "Github" ]
