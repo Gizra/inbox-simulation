@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.com/Gizra/boa-inbox.svg?token=p2M1EeCrd3dY32WxWj3X&branch=master)](https://travis-ci.com/Gizra/boa-inbox)
+[![Build Status](https://travis-ci.com/Gizra/inbox-training.svg?token=p2M1EeCrd3dY32WxWj3X&branch=master)](https://travis-ci.com/Gizra/inbox-training)
 
-> boa-inbox
+> Inbox training
 
 ## Installation
 
@@ -9,6 +9,11 @@ Make sure the following are installed:
 * NodeJs (and npm)
 * Elm (e.g. `npm install -g elm@~0.17.0`)
 * Compass (for SASS) (`gem update --system && gem install compass`)
+
+```
+npm install
+elm-package install -y
+```
 
 ## Usage
 
