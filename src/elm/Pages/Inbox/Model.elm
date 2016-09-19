@@ -42,11 +42,12 @@ Fatback pig ribeye hamburger biltong landjaeger beef ribs pork belly porchetta t
 
 Adam
             """
+        , emailDelivery = Immediate
         , options =
             Dict.fromList
-                [ ( 1, EmailOption "Run screaming" 10 )
-                , ( 2, EmailOption "Forward to manager" 50 )
-                , ( 3, EmailOption "BCC all" 100 )
+                [ ( 1, EmailOption "Run screaming" 10 Nothing )
+                , ( 2, EmailOption "Forward to manager" 50 Nothing )
+                , ( 3, EmailOption "BCC all" 100 Nothing )
                 ]
         }
       )
@@ -61,11 +62,12 @@ Adam
 
 It's the holidays season, and we want some holidays
               """
+        , emailDelivery = Immediate
         , options =
             Dict.fromList
-                [ ( 1, EmailOption "Subscribe" 10 )
-                , ( 2, EmailOption "Ignore" 50 )
-                , ( 3, EmailOption "Forward to everybody" 100 )
+                [ ( 1, EmailOption "Subscribe" 15 Nothing )
+                , ( 2, EmailOption "Ignore" 55 Nothing )
+                , ( 3, EmailOption "Forward to everybody" 75 Nothing )
                 ]
         }
       )
