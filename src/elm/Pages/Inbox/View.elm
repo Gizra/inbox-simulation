@@ -6,7 +6,6 @@ import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 import Pages.Inbox.Model exposing (..)
 import Pages.Inbox.Update exposing (..)
-import Pages.Inbox.Utils exposing (..)
 import Email.Model exposing (..)
 
 
@@ -17,7 +16,6 @@ view model =
         , viewMain model
         , pre []
             [ text <| toString model.emailsStatus
-            , text <| toString <| getScore model
             ]
         ]
 
