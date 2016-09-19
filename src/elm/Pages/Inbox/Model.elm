@@ -7,6 +7,7 @@ import Email.Model exposing (..)
 type alias Model =
     { emails : Dict EmailType Email
     , selectedEmail : Maybe EmailType
+    , shownEmails : List EmailType
     , emailsStatus : EmailsStatus
     }
 
@@ -15,8 +16,15 @@ emptyModel : Model
 emptyModel =
     { emails = Dict.fromList emails
     , selectedEmail = Just "Urgent"
+    , shownEmails = getImmediateEmails emails
     , emailsStatus = Dict.empty
     }
+
+
+getImmediateEmails : List ( EmailType, Email ) -> List EmailType
+getImmediateEmails emails =
+    List.filter (\( emailType, email ) -> email.emailDelivery == Immediate) emails
+        |> List.map fst
 
 
 
@@ -68,6 +76,23 @@ It's the holidays season, and we want some holidays
                 [ ( 1, EmailOption "Subscribe" 15 Nothing )
                 , ( 2, EmailOption "Ignore" 55 Nothing )
                 , ( 3, EmailOption "Forward to everybody" 75 Nothing )
+                ]
+        }
+      )
+    , ( "VacationIgnoreResponse"
+      , { from = "Adar Earon"
+        , email = "<adar@gizra.com>"
+        , subject = "Are you not coming?"
+        , teaser = "You are the only one..."
+        , body =
+            """
+You are the only one... Please reconsider
+          """
+        , emailDelivery = Delayed
+        , options =
+            Dict.fromList
+                [ ( 1, EmailOption "Approve" 15 Nothing )
+                , ( 2, EmailOption "Deny" 25 Nothing )
                 ]
         }
       )
