@@ -18,44 +18,52 @@ type Msg
 update : Msg -> Model -> ( Model, Cmd Msg )
 update action model =
     case action of
-        SetEmailStatus name score ->
+        SetEmailStatus emailType score ->
             let
-                emailsStatus = Dict.insert name score model.emailsStatus
+                emailsStatus =
+                    Dict.insert emailType score model.emailsStatus
             in
-                {model | emailsStatus = emailsStatus } ! []
-        SetSelectedEmail name ->
+                { model | emailsStatus = emailsStatus } ! []
+
+        SetSelectedEmail emailType ->
             -- If same email is selected, we un-select the emails.
             let
                 selectedEmail =
                     case model.selectedEmail of
                         Nothing ->
-                            name
+                            emailType
 
                         Just val ->
-                            case name of
+                            case emailType of
                                 Nothing ->
-                                    name
+                                    emailType
 
                                 Just val' ->
                                     if val == val' then
                                         Nothing
                                     else
                                         Just val'
+
                 -- Set email status
-                emailsStatus = case name of
-                    Nothing -> model.emailsStatus
-                    Just val ->
-                        case (Dict.get val model.emailsStatus) of
-                            Nothing ->
-                                let
-                                  model' = fst <| update (SetEmailStatus val 0) model
-                                in
-                                    model'.emailsStatus
-                            Just _ ->
-                                model.emailsStatus
+                emailsStatus =
+                    case emailType of
+                        Nothing ->
+                            model.emailsStatus
 
+                        Just val ->
+                            case (Dict.get val model.emailsStatus) of
+                                Nothing ->
+                                    let
+                                        model' =
+                                            fst <| update (SetEmailStatus val 0) model
+                                    in
+                                        model'.emailsStatus
 
+                                Just _ ->
+                                    model.emailsStatus
             in
-                { model | selectedEmail = selectedEmail
-                , emailsStatus = emailsStatus
-                } ! []
+                { model
+                    | selectedEmail = selectedEmail
+                    , emailsStatus = emailsStatus
+                }
+                    ! []

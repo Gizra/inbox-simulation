@@ -11,32 +11,34 @@ import Email.Model exposing (..)
 
 view : Model -> Html Msg
 view model =
-    let
-        _ = getScore model
-    in
     div [ class "ui container" ]
         [ viewNavbar model
         , viewMain model
         , pre []
-        [ text <| toString model.emailsStatus
-        , text <| toString <| getScore model
-        ]
+            [ text <| toString model.emailsStatus
+            , text <| toString <| getScore model
+            ]
         ]
 
 
 getScore : Model -> Int
 getScore model =
     let
-      f emailType answerIndex total =
-          case (Dict.get emailType model.emails) of
-              Nothing -> 0
-              Just email ->
-                  case (Dict.get answerIndex email.options) of
-                      Nothing -> 0
-                      Just option ->
-                          option.score + total
+        calculate emailType optionKey total =
+            case (Dict.get emailType model.emails) of
+                Nothing ->
+                    0
+
+                Just email ->
+                    case (Dict.get optionKey email.options) of
+                        Nothing ->
+                            0
+
+                        Just option ->
+                            option.score + total
     in
-        Dict.foldl f 0 model.emailsStatus
+        Dict.foldl calculate 0 model.emailsStatus
+
 
 viewNavbar : Model -> Html Msg
 viewNavbar model =
@@ -227,23 +229,25 @@ viewSelectedEmail model =
                             ]
 
 
-viewShowOption : EmailType -> EmailsStatus -> (Int, EmailOption) -> Html Msg
-viewShowOption emailType emailsStatus (optionId, option) =
+viewShowOption : EmailType -> EmailsStatus -> ( Int, EmailOption ) -> Html Msg
+viewShowOption emailType emailsStatus ( optionKey, option ) =
     let
-      isChecked =
-          case (Dict.get emailType emailsStatus) of
-              Nothing -> False
-              Just index ->
-                  optionId == index
+        isChecked =
+            case (Dict.get emailType emailsStatus) of
+                Nothing ->
+                    False
 
+                Just index ->
+                    optionKey == index
     in
         div [ class "field" ]
             [ div [ class "ui radio checkbox" ]
-                [ input [ type' "radio"
-                , name "radio"
-                , checked isChecked
-                , onClick <| SetEmailStatus emailType optionId
-                ]
+                [ input
+                    [ type' "radio"
+                    , name "radio"
+                    , checked isChecked
+                    , onClick <| SetEmailStatus emailType optionKey
+                    ]
                     []
                 , label []
                     [ text option.label ]
