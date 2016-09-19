@@ -26,7 +26,12 @@ update action model =
             -- Rebuild the dict, by appending the new email to the list.
             let
                 shownEmails =
-                    emailType :: model.shownEmails
+                    if (List.any (\type' -> emailType == type') model.shownEmails) then
+                        -- Email type is already in teh shown emails list.
+                        model.shownEmails
+                    else
+                        -- Append the new email type to the shown list.
+                        emailType :: model.shownEmails
             in
                 { model | shownEmails = shownEmails } ! []
 
