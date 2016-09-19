@@ -130,7 +130,7 @@ viewMain model =
                 , div [ class "content__messages" ]
                     [ div [ class "content__messages__list" ]
                         [ div [ class "ui relaxed divided list" ]
-                            (List.map (viewMailItem model.emails) model.shownEmails)
+                            (List.map (viewMailItem model.emails model.emailsStatus) model.shownEmails)
                         ]
                     , (viewSelectedEmail model)
                     ]
@@ -139,31 +139,45 @@ viewMain model =
         ]
 
 
-viewMailItem : Dict EmailType Email -> EmailType -> Html Msg
-viewMailItem emails emailType =
+viewMailItem : Dict EmailType Email -> EmailsStatus -> EmailType -> Html Msg
+viewMailItem emails emailsStatus emailType =
     case Dict.get emailType emails of
         Nothing ->
             -- This shouldn't ever happen.
             div [] []
 
         Just email ->
-            div [ class "item" ]
-                [ div [ class "content__messages__list__checkbox" ]
-                    [ input [ type' "checkbox" ]
-                        []
-                    ]
-                , div [ class "content__messages__list__item" ]
-                    [ a
-                        [ class "content__messages__list__item__from"
-                        , (onClick <| SetSelectedEmail <| Just emailType)
+            let
+                notOpened =
+                    case Dict.get emailType emailsStatus of
+                        Nothing ->
+                            True
+
+                        Just _ ->
+                            False
+            in
+                div [ class "item" ]
+                    [ div [ class "content__messages__list__checkbox" ]
+                        [ input [ type' "checkbox" ]
+                            []
                         ]
-                        [ text email.from ]
-                    , div [ class "content__messages__list__item__subject" ]
-                        [ text email.subject ]
-                    , div [ class "content__messages__list__item__content" ]
-                        [ text email.teaser ]
+                    , div
+                        [ classList
+                            [ ( "content__messages__list__item", True )
+                            , ( "not-opened", notOpened )
+                            ]
+                        ]
+                        [ a
+                            [ class "content__messages__list__item__from"
+                            , (onClick <| SetSelectedEmail <| Just emailType)
+                            ]
+                            [ text email.from ]
+                        , div [ class "content__messages__list__item__subject" ]
+                            [ text email.subject ]
+                        , div [ class "content__messages__list__item__content" ]
+                            [ text email.teaser ]
+                        ]
                     ]
-                ]
 
 
 viewSelectedEmail : Model -> Html Msg
