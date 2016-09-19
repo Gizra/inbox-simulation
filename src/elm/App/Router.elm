@@ -15,6 +15,9 @@ delta2url previous current =
         PageNotFound ->
             Just <| UrlChange NewEntry "/#404"
 
+        ScoreDashboard ->
+            Just <| UrlChange NewEntry "/#scores"
+
 
 location2messages : Location -> List Msg
 location2messages location =
@@ -24,6 +27,9 @@ location2messages location =
 
         "#inbox" ->
             [ SetActivePage Inbox ]
+
+        "#scores" ->
+            [ SetActivePage ScoreDashboard ]
 
         "#404" ->
             [ SetActivePage PageNotFound ]

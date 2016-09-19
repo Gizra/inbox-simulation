@@ -8,6 +8,7 @@ import App.Model exposing (..)
 import App.Update exposing (..)
 import Pages.Inbox.View exposing (..)
 import Pages.PageNotFound.View exposing (..)
+import Pages.ScoreDashboard.View exposing (..)
 
 
 view : Model -> Html Msg
@@ -32,7 +33,11 @@ navbarAnonymous model =
         , onClick <| SetActivePage Inbox
         ]
         [ text "Inbox" ]
-    , viewPageNotFoundItem model.activePage
+    , a
+        [ classByPage ScoreDashboard model.activePage
+        , onClick <| SetActivePage ScoreDashboard
+        ]
+        [ text "Score Dashboard" ]
     ]
 
 
@@ -54,6 +59,9 @@ viewMainContent model =
         PageNotFound ->
             -- We don't need to pass any cmds, so we can call the view directly
             Pages.PageNotFound.View.view
+
+        ScoreDashboard ->
+            Pages.ScoreDashboard.View.view model.pageInbox
 
 
 viewFooter : Html Msg
