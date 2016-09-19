@@ -22,7 +22,7 @@ view model =
 
 viewHeader : Model -> Html Msg
 viewHeader model =
-    div [ class "ui container" ]
+    div [ class "ui container header-menu" ]
         [ div [ class "ui secondary pointing menu" ] (navbarAnonymous model)
         ]
 
