@@ -7,6 +7,7 @@ import Email.Model exposing (..)
 type alias Model =
     { emails : Dict EmailType Email
     , selectedEmail : Maybe EmailType
+    , emailsStatus : EmailsStatus
     }
 
 
@@ -14,6 +15,7 @@ emptyModel : Model
 emptyModel =
     { emails = Dict.fromList emails
     , selectedEmail = Just "Urgent"
+    , emailsStatus = Dict.empty
     }
 
 
@@ -41,14 +43,15 @@ Fatback pig ribeye hamburger biltong landjaeger beef ribs pork belly porchetta t
 Adam
             """
         , options =
-            [ EmailOption "Run screaming" 10
-            , EmailOption "Forward to manager" 50
-            , EmailOption "BCC all" 100
-            ]
+            Dict.fromList
+                [ ( 1, EmailOption "Run screaming" 10 )
+                , ( 2, EmailOption "Forward to manager" 50 )
+                , ( 3, EmailOption "BCC all" 100 )
+                ]
         }
       )
     , ( "Vacation"
-      , { from = "Adar Aeron"
+      , { from = "Adar Earon"
         , email = "<adar@gizra.com>"
         , subject = "Company holiday"
         , teaser = "Hi folks, It's the holidays season"
@@ -59,10 +62,11 @@ Adam
 It's the holidays season, and we want some holidays
               """
         , options =
-            [ EmailOption "Subscribe" 10
-            , EmailOption "Ignore" 50
-            , EmailOption "Forward to everybody" 100
-            ]
+            Dict.fromList
+                [ ( 1, EmailOption "Subscribe" 10 )
+                , ( 2, EmailOption "Ignore" 50 )
+                , ( 3, EmailOption "Forward to everybody" 100 )
+                ]
         }
       )
     ]

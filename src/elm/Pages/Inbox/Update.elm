@@ -1,5 +1,6 @@
 module Pages.Inbox.Update exposing (update, Msg(..))
 
+import Dict exposing (..)
 import Email.Model exposing (..)
 import Pages.Inbox.Model as Inbox exposing (..)
 
@@ -10,29 +11,59 @@ init =
 
 
 type Msg
-    = SetSelectedEmail (Maybe EmailType)
+    = SetEmailStatus EmailType Int
+    | SetSelectedEmail (Maybe EmailType)
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update action model =
     case action of
-        SetSelectedEmail name ->
+        SetEmailStatus emailType score ->
+            let
+                emailsStatus =
+                    Dict.insert emailType score model.emailsStatus
+            in
+                { model | emailsStatus = emailsStatus } ! []
+
+        SetSelectedEmail emailType ->
             -- If same email is selected, we un-select the emails.
             let
                 selectedEmail =
                     case model.selectedEmail of
                         Nothing ->
-                            name
+                            emailType
 
                         Just val ->
-                            case name of
+                            case emailType of
                                 Nothing ->
-                                    name
+                                    emailType
 
                                 Just val' ->
                                     if val == val' then
                                         Nothing
                                     else
                                         Just val'
+
+                -- Set email status
+                emailsStatus =
+                    case emailType of
+                        Nothing ->
+                            model.emailsStatus
+
+                        Just val ->
+                            case (Dict.get val model.emailsStatus) of
+                                Nothing ->
+                                    let
+                                        model' =
+                                            fst <| update (SetEmailStatus val 0) model
+                                    in
+                                        model'.emailsStatus
+
+                                Just _ ->
+                                    model.emailsStatus
             in
-                { model | selectedEmail = selectedEmail } ! []
+                { model
+                    | selectedEmail = selectedEmail
+                    , emailsStatus = emailsStatus
+                }
+                    ! []
