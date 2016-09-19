@@ -6,6 +6,7 @@ import Pages.Inbox.Model exposing (emptyModel, Model)
 type Page
     = Inbox
     | PageNotFound
+    | ScoreDashboard
 
 
 type alias Model =
