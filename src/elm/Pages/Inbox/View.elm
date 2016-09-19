@@ -229,13 +229,14 @@ viewSelectedEmail model =
 viewShowOption : EmailType -> EmailsStatus -> ( Int, EmailOption ) -> Html Msg
 viewShowOption emailType emailsStatus ( optionKey, option ) =
     let
-        isChecked =
+        (isChecked, optionSelected) =
             case (Dict.get emailType emailsStatus) of
                 Nothing ->
-                    False
+                    (False, False)
 
                 Just index ->
-                    optionKey == index
+                    (optionKey == index, index > 0)
+
     in
         div [ class "field" ]
             [ div [ class "ui radio checkbox" ]
@@ -244,6 +245,7 @@ viewShowOption emailType emailsStatus ( optionKey, option ) =
                     , name "radio"
                     , checked isChecked
                     , onClick <| SetEmailStatus emailType optionKey
+                    , disabled optionSelected
                     ]
                     []
                 , label []
