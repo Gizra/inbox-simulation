@@ -14,9 +14,6 @@ view model =
     div [ class "ui container" ]
         [ viewNavbar model
         , viewMain model
-        , pre []
-            [ text <| toString model.emailsStatus
-            ]
         ]
 
 
