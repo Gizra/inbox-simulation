@@ -6,6 +6,7 @@ import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 import Pages.Inbox.Model exposing (..)
 import Pages.Inbox.Update exposing (..)
+import Pages.Inbox.Utils exposing (..)
 import Email.Model exposing (..)
 
 
@@ -19,25 +20,6 @@ view model =
             , text <| toString <| getScore model
             ]
         ]
-
-
-getScore : Model -> Int
-getScore model =
-    let
-        calculate emailType optionKey total =
-            case (Dict.get emailType model.emails) of
-                Nothing ->
-                    0
-
-                Just email ->
-                    case (Dict.get optionKey email.options) of
-                        Nothing ->
-                            0
-
-                        Just option ->
-                            option.score + total
-    in
-        Dict.foldl calculate 0 model.emailsStatus
 
 
 viewNavbar : Model -> Html Msg
