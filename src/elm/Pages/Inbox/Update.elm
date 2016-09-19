@@ -11,19 +11,32 @@ init =
 
 
 type Msg
-    = SetEmailStatus EmailType Int
+    = DeliverEmail EmailType
+    | SetEmailStatus EmailType Int
     | SetSelectedEmail (Maybe EmailType)
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update action model =
     case action of
-        SetEmailStatus emailType score ->
+        DeliverEmail emailType ->
+            -- Rebuild the dict, by appending the new email to the list.
             let
-                emailsStatus =
-                    Dict.insert emailType score model.emailsStatus
+                shownEmails =
+                    emailType :: model.shownEmails
             in
-                { model | emailsStatus = emailsStatus } ! []
+                { model | shownEmails = shownEmails } ! []
+
+        SetEmailStatus emailType keyOption ->
+            let
+                model' =
+                    update (DeliverEmail emailType) model
+                        |> fst
+
+                emailsStatus =
+                    Dict.insert emailType keyOption model'.emailsStatus
+            in
+                { model' | emailsStatus = emailsStatus } ! []
 
         SetSelectedEmail emailType ->
             -- If same email is selected, we un-select the emails.

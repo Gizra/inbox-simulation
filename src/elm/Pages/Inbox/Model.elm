@@ -21,6 +21,10 @@ emptyModel =
     }
 
 
+
+-- Get only the emails that should be delivered "immediatly".
+
+
 getImmediateEmails : List ( EmailType, Email ) -> List EmailType
 getImmediateEmails emails =
     List.filter (\( emailType, email ) -> email.emailDelivery == Immediate) emails
@@ -74,7 +78,7 @@ It's the holidays season, and we want some holidays
         , options =
             Dict.fromList
                 [ ( 1, EmailOption "Subscribe" 15 Nothing )
-                , ( 2, EmailOption "Ignore" 55 Nothing )
+                , ( 2, EmailOption "Ignore" 55 <| Just "VacationIgnoreResponse" )
                 , ( 3, EmailOption "Forward to everybody" 75 Nothing )
                 ]
         }
