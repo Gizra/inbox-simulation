@@ -17,7 +17,7 @@ emptyModel =
     { emails = Dict.fromList emails
     , selectedEmail = Just "Urgent"
     , shownEmails = getImmediateEmails emails
-    , emailsStatus = Dict.empty
+    , emailsStatus = Dict.insert "Urgent" 0 Dict.empty
     }
 
 
