@@ -76,8 +76,36 @@ dummyScores =
       , position = "Human Resources"
       , progress = 50
       , inboxSimulation = ScoreAndTime 66 "15:22"
-      , leadershipAssessment = ScoreAndTime 25 "02:10"
-      , overallScore = 89
+      , leadershipAssessment = ScoreAndTime 25 "20:09"
+      , overallScore = 91
+      }
+    , { name = "Josie Packard"
+      , position = "Financial Services"
+      , progress = 22
+      , inboxSimulation = ScoreAndTime 38 "14:22"
+      , leadershipAssessment = ScoreAndTime 22 "24:10"
+      , overallScore = 60
+      }
+    , { name = "Dale Cooper"
+      , position = "Financial Services"
+      , progress = 78
+      , inboxSimulation = ScoreAndTime 25 "15:18"
+      , leadershipAssessment = ScoreAndTime 36 "20:10"
+      , overallScore = 61
+      }
+    , { name = "Leo Johnson"
+      , position = "Human Resources"
+      , progress = 34
+      , inboxSimulation = ScoreAndTime 62 "14:21"
+      , leadershipAssessment = ScoreAndTime 23 "18:04"
+      , overallScore = 85
+      }
+    , { name = "Audrey Horne"
+      , position = "Financial Services"
+      , progress = 58
+      , inboxSimulation = ScoreAndTime 62 "13:28"
+      , leadershipAssessment = ScoreAndTime 25 "19:18"
+      , overallScore = 87
       }
     ]
 
