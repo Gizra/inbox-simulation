@@ -1,5 +1,6 @@
 module Pages.ScoreDashboard.View exposing (view)
 
+import Json.Encode as Json
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Pages.Inbox.Model exposing (..)
@@ -104,12 +105,12 @@ hardcodedRows model scoreData =
                     ]
                 ]
             , td []
-                [ div [ class "ui progress" ]
-                    [ div [ class "bar" ]
-                        [ div [ class "progress" ]
-                            []
-                        ]
+                -- Progress bar
+                [ (node "progress")
+                    [ value <| toString scoreData.progress
+                    , Html.Attributes.max "100"
                     ]
+                    []
                 ]
             , td []
                 [ text scoreData.inboxSimulation.time ]
