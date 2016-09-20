@@ -67,10 +67,10 @@ dummyScores : List Score
 dummyScores =
     [ { name = "John Q. Smith"
       , position = "Human Resources"
-      , progress = 30
+      , progress = 96
       , inboxSimulation = ScoreAndTime 22 "10:22"
       , leadershipAssessment = ScoreAndTime 45 "12:10"
-      , overallScore = 87
+      , overallScore = 0
       }
     , { name = "Laura Palmer"
       , position = "Human Resources"
