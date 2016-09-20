@@ -1,0 +1,35 @@
+---
+layout: default
+label: Dashboard
+---
+
+<h1>User Dashboard</h1>
+
+<div class="ui segment stacked">
+  <table class="ui very basic collapsing celled table">
+    <thead>
+      <tr>
+        <th rowspan="2">Employee</th>
+        <th rowspan="2">Overall Progress</th>
+        <th colspan="2">Inbox Simulation</th>
+        <th colspan="2">Leadership Assessment</th>
+        <th rowspan="2">Overall Score</th>
+      </tr>
+      <tr>
+        <th>Time to Complete</th>
+        <th>Score</th>
+        <th>Time to Complete</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%include user_row.html %}
+      {%include user_row.html %}
+      {%include user_row.html %}
+      {%include user_row.html %}
+      {%include user_row.html %}
+      {%include user_row.html %}
+      {%include user_row.html %}
+    </tbody>
+  </table>  
+</div>

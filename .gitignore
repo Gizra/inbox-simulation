@@ -2,3 +2,6 @@ elm-stuff
 node_modules
 serve
 dist
+
+#OS Files
+.DS_Store
