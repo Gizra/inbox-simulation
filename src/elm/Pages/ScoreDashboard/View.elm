@@ -38,7 +38,7 @@ view model =
                             [ text "Score" ]
                         ]
                     ]
-                , tbody [] (List.map hardcodedRows dummyScores)
+                , tbody [] (List.map (hardcodedRows model) dummyScores)
                 ]
             ]
         ]
@@ -81,36 +81,44 @@ dummyScores =
     ]
 
 
-hardcodedRows : Score -> Html msg
-hardcodedRows scoreData =
-    tr []
-        [ td []
-            [ h4 [ class "ui image header" ]
-                [ i [ class "user icon" ]
-                    []
-                , div [ class "content" ]
-                    [ text scoreData.name
-                    , div [ class "sub header" ]
-                        [ text scoreData.position ]
-                    ]
-                ]
-            ]
-        , td []
-            [ div [ class "ui progress" ]
-                [ div [ class "bar" ]
-                    [ div [ class "progress" ]
+hardcodedRows : Model -> Score -> Html msg
+hardcodedRows model scoreData =
+    let
+        -- For the first user in the row, we use the calculated overall score.
+        overallScore =
+            if scoreData.name == "John Q. Smith" then
+                getScore model
+            else
+                scoreData.overallScore
+    in
+        tr []
+            [ td []
+                [ h4 [ class "ui image header" ]
+                    [ i [ class "user icon" ]
                         []
+                    , div [ class "content" ]
+                        [ text scoreData.name
+                        , div [ class "sub header" ]
+                            [ text scoreData.position ]
+                        ]
                     ]
                 ]
+            , td []
+                [ div [ class "ui progress" ]
+                    [ div [ class "bar" ]
+                        [ div [ class "progress" ]
+                            []
+                        ]
+                    ]
+                ]
+            , td []
+                [ text scoreData.inboxSimulation.time ]
+            , td []
+                [ text <| toString scoreData.inboxSimulation.score ]
+            , td []
+                [ text scoreData.leadershipAssessment.time ]
+            , td []
+                [ text <| toString scoreData.leadershipAssessment.score ]
+            , td []
+                [ text <| toString overallScore ]
             ]
-        , td []
-            [ text scoreData.inboxSimulation.time ]
-        , td []
-            [ text <| toString scoreData.inboxSimulation.score ]
-        , td []
-            [ text scoreData.leadershipAssessment.time ]
-        , td []
-            [ text <| toString scoreData.leadershipAssessment.score ]
-        , td []
-            [ text <| toString scoreData.overallScore ]
-        ]
