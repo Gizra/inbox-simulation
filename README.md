@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/Gizra/inbox-training.svg?token=p2M1EeCrd3dY32WxWj3X&branch=master)](https://travis-ci.com/Gizra/inbox-training)
+[![Build Status](https://travis-ci.org/Gizra/inbox-simulation.svg?branch=master)](https://travis-ci.org/Gizra/inbox-simulation)
 
 > Inbox training
 
