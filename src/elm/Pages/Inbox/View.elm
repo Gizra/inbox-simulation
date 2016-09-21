@@ -200,7 +200,7 @@ viewSelectedEmail model =
                             [ div [ class "content__messages__selected__header" ]
                                 [ div [ class "ui form segment" ]
                                     [ div [ class "grouped fields" ]
-                                        [ label [] [ text "What should you do next?" ]
+                                        [ label [] [ text "Action:" ]
                                         , div [] (List.map (viewShowOption name model.emailsStatus) <| Dict.toList email.options)
                                         ]
                                     ]

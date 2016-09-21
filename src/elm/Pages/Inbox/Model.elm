@@ -38,65 +38,147 @@ getImmediateEmails emails =
 emails : List ( EmailType, Email )
 emails =
     [ ( "Urgent"
-      , { from = "Adam Stewart"
-        , email = "<adam@gizra.com>"
-        , subject = "Urgent needs attention"
-        , teaser = "Can we get an update on the latest version of the"
+      , { from = "Josie Packard"
+        , email = "<josie@greatnortherco.com>"
+        , subject = "Urgent - need draft of the report"
+        , teaser = "Can I get an update on the latest version of the"
         , body =
             """
-            Adam,
+            John,
 
-Bacon ipsum dolor amet ham hock short loin shoulder capicola landjaeger sirloin beef ribs. Shank rump leberkas picanha kevin jerky. Ground round short loin shank, tail beef ribs doner pig flank cupim. Pig ham venison tongue alcatra andouille sirloin pancetta bresaola leberkas. Kielbasa meatball alcatra pork shoulder prosciutto pancetta landjaeger short loin shankle andouille. Ham hock short ribs pork belly venison drumstick landjaeger chicken rump fatback doner kevin. Boudin tongue andouille turducken.
+Can I get an update on the latest version of the proposal to working group. The meeting is on Thursday and I think it's important that we all be on the same page coming into the meeting. If everyone has had a chance to vet the document in advance, I think that we have a better chance of moving the proposal to the next stage.
 
-Shankle doner filet mignon rump picanha. Pastrami t-bone pork loin sausage. Turducken spare ribs alcatra, sausage sirloin short loin kielbasa ribeye. Tongue tri-tip jerky chicken filet mignon, tail hamburger turkey venison shankle pig ham capicola kevin.
+I think the proposal has wide implications for the way we do business and it would be a shame for it to get held up at this stage because nobody had eyes on it before the meeting.
 
-Fatback pig ribeye hamburger biltong landjaeger beef ribs pork belly porchetta tri-tip. Corned beef leberkas cupim rump strip steak ground round ball tip tongue, shankle venison flank sirloin kielbasa bresaola. Hamburger picanha pork loin capicola salami pancetta. Boudin kielbasa shankle pig, beef ribs pancetta capicola porchetta spare ribs corned beef pork belly biltong sirloin short loin. Pig hamburger landjaeger meatball boudin, tail flank kevin filet mignon ribeye fatback.
+I appreciate your attention to this!
 
-Adam
+Thanks,
+Josie
+
+Josie Packard
+SVP for Finiancial Products
+Great Northern Company
             """
         , emailDelivery = Immediate
         , options =
             Dict.fromList
-                [ ( 1, EmailOption "Run screaming" 10 Nothing )
-                , ( 2, EmailOption "Forward to manager" 50 Nothing )
-                , ( 3, EmailOption "BCC all" 100 Nothing )
+                [ ( 1, EmailOption "Respond to Josie explaining that the proposal is on track to be delivered tommorrow, at least 24 hours in advance of the meeting" 10 Nothing )
+                , ( 2, EmailOption "Respond to Josie explaining that there is not enought time to complete the draft before the meeting and that she should dedicate the first 10 minutes of the meeting to reviewing the document." 50 Nothing )
+                , ( 3, EmailOption "Respond to Josie's email after you have completed the draft." 100 Nothing )
                 ]
         }
       )
     , ( "Vacation"
-      , { from = "Adar Earon"
-        , email = "<adar@gizra.com>"
-        , subject = "Company holiday"
-        , teaser = "Hi folks, It's the holidays season"
+      , { from = "Dale Cooper"
+        , email = "<dale@greatnortherco.com>"
+        , subject = "Corporate Vacation Policy"
+        , teaser = " Hi Everyone, It's come to our attention that"
         , body =
             """
-              Hi folks,
+              Hi Everyone,
 
-It's the holidays season, and we want some holidays
+It has come to our attention that the updated guidance on the corporate vacation policy contained an error. Please note that employees do not have unlimited vacation days as part of the revised policy.
+
+This email notifiction serves as an effective update of the corporate vacation policy until a new policy statement can be drafted. Please reply immediately to this email to acknowledge receipt of this communication and acceptance of the update.
+
+Sincerely,
+Dale Cooper
+
+Dale Cooper
+Human Resources Director
+Great Northern Company
               """
         , emailDelivery = Immediate
         , options =
             Dict.fromList
-                [ ( 1, EmailOption "Subscribe" 15 Nothing )
-                , ( 2, EmailOption "Ignore" 55 <| Just "VacationIgnoreResponse" )
-                , ( 3, EmailOption "Forward to everybody" 75 Nothing )
+                [ ( 1, EmailOption "Respond immediately acknowledging that you have receieved the correspondence and accepth the policy." 15 Nothing )
+                , ( 2, EmailOption "Reply to all requesting clarification if vacation days taken since the policy update will count toward allowed vacation time." 75 Nothing )
+                , ( 3, EmailOption "Move on to another email, respond later." 55 <| Just "VacationIgnoreResponse" )
+                ]
+        }
+      )
+    , ( "London"
+      , { from = "Leo Johnson"
+        , email = "<leo@greatnortherco.com>"
+        , subject = "Instructions to our office in London"
+        , teaser = " Dear Mr. Smith, I just wanted to point out that in the instructions"
+        , body =
+            """
+              Dear Mr. Smith,
+
+I just wanted to point out that in the instructions you sent to out global network, you failed to mention that for our London office, disclosure documentation needs to be delivered in hard and electronic format as is the custom here. This is a part of our workflow that is crucial to maintaining client confidence.
+
+As I'm sure you understand, it is imporatnt to take into account local customs and business practise when circulating procedural documentation to our  network of 53 offices worldwide. It's a daunting task, but one that is of the uptmost importance.
+
+Thanks you for your attention to this matter. I kindly request that you reissue the instructions with correction to this matter.
+
+Kindly Yours,
+Leo Johnson
+
+Leo Johnson
+General Director, London Office
+Great Northern Company
+              """
+        , emailDelivery = Immediate
+        , options =
+            Dict.fromList
+                [ ( 1, EmailOption "Respond immediately indicating that you will review and revise the instructions." 15 Nothing )
+                , ( 2, EmailOption "Respond immediately indicating that you understand the concern, but accomodations like this cannot be made for each of the global offices." 75 Nothing )
+                , ( 3, EmailOption "Move on to another email, respond later." 55 <| Just "LondonIgnoreResponse" )
                 ]
         }
       )
     , ( "VacationIgnoreResponse"
-      , { from = "Adar Earon"
-        , email = "<adar@gizra.com>"
-        , subject = "Are you not coming?"
-        , teaser = "You are the only one..."
+      , { from = "Dale Cooper"
+        , email = "<dale@greatnortherco.com>"
+        , subject = "Important: Response Required"
+        , teaser = "It is important that you respond immediately to the previous"
         , body =
             """
-You are the only one... Please reconsider
+It is important that you respond immediately to the previous correspondence regarding the corporate vacation policy. Failure to do so may result in immediate suspension of employee benefits.
+
+Thank you for your attention.
+
+Sincerely,
+Dale Cooper
+
+Dale Cooper
+Human Resources Director
+Great Northern Company
           """
         , emailDelivery = Delayed
         , options =
             Dict.fromList
-                [ ( 1, EmailOption "Approve" 15 Nothing )
-                , ( 2, EmailOption "Deny" 25 Nothing )
+                [ ( 1, EmailOption "Respond immediately to this email acknowledging that you have receieved the correspondence and accepth the policy." 15 Nothing )
+                , ( 2, EmailOption "Respond immediately to the prior email acknowledging that you have receieved the correspondence and accepth the policy." 25 Nothing )
+                , ( 3, EmailOption "Move on to another email, respond later." 25 Nothing )
+                ]
+        }
+      )
+    , ( "LondonIgnoreResponse"
+      , { from = "Leo Johnson"
+        , email = "<leo@greatnortherco.com>"
+        , subject = "Re: Instructions to our office in London"
+        , teaser = " Dear Mr. Smith, I just wanted to point out that in the instructions"
+        , body =
+            """
+              Dear Mr. Smith,
+
+Just following up on the previous issue. Please acknowledge.
+
+Yours,
+Leo Johnson
+
+Leo Johnson
+General Director, London Office
+Great Northern Company
+              """
+        , emailDelivery = Delayed
+        , options =
+            Dict.fromList
+                [ ( 1, EmailOption "Respond immediately indicating that you will review and revise the instructions." 15 Nothing )
+                , ( 2, EmailOption "Respond immediately indicating that you understand the concern, but accomodations like this cannot be made for each of the global offices." 75 Nothing )
+                , ( 3, EmailOption "Move on to another email, respond later." 25 Nothing )
                 ]
         }
       )
