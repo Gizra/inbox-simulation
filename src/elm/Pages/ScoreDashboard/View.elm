@@ -73,7 +73,7 @@ dummyScores =
       , overallScore = 0
       }
     , { name = "Laura Palmer"
-      , position = "Human Resources"
+      , position = "Financial Services"
       , progress = 50
       , inboxSimulation = ScoreAndTime 66 "15:22"
       , leadershipAssessment = ScoreAndTime 25 "20:09"
@@ -87,7 +87,7 @@ dummyScores =
       , overallScore = 60
       }
     , { name = "Dale Cooper"
-      , position = "Financial Services"
+      , position = "Human Resources"
       , progress = 78
       , inboxSimulation = ScoreAndTime 25 "15:18"
       , leadershipAssessment = ScoreAndTime 36 "20:10"

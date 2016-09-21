@@ -45,6 +45,11 @@ body {
   overflow-y: scroll;
 }
 
+.content__messages__action {
+  margin-top: 25px !important;
+  margin-bottom: 100px !important;
+}
+
 .sidebar_left {
   flex-basis: 25%;
   background-color: #f4f4f4;

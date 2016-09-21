@@ -198,13 +198,7 @@ viewSelectedEmail model =
                     Just email ->
                         div [ class "content__messages__selected" ]
                             [ div [ class "content__messages__selected__header" ]
-                                [ div [ class "ui form segment" ]
-                                    [ div [ class "grouped fields" ]
-                                        [ label [] [ text "What should you do next?" ]
-                                        , div [] (List.map (viewShowOption name model.emailsStatus) <| Dict.toList email.options)
-                                        ]
-                                    ]
-                                , div [ class "content__messages__selected__header_title" ]
+                                [ div [ class "content__messages__selected__header_title" ]
                                     [ text email.subject ]
                                 , div [ class "content__messages__selected__header_sender" ]
                                     [ text email.from ]
@@ -223,20 +217,27 @@ viewSelectedEmail model =
                             , div [ class "content__messages__selected__content" ]
                                 [ text email.body
                                 ]
+                            , div [ class "ui form icon message content__messages__action" ]
+                                [ i [ class "inbox icon" ]
+                                    []
+                                , div [ class "grouped fields" ]
+                                    [ label [] [ text "Action:" ]
+                                    , div [] (List.map (viewShowOption name model.emailsStatus) <| Dict.toList email.options)
+                                    ]
+                                ]
                             ]
 
 
 viewShowOption : EmailType -> EmailsStatus -> ( Int, EmailOption ) -> Html Msg
 viewShowOption emailType emailsStatus ( optionKey, option ) =
     let
-        (isChecked, optionSelected) =
+        ( isChecked, optionSelected ) =
             case (Dict.get emailType emailsStatus) of
                 Nothing ->
-                    (False, False)
+                    ( False, False )
 
                 Just index ->
-                    (optionKey == index, index > 0)
-
+                    ( optionKey == index, index > 0 )
     in
         div [ class "field" ]
             [ div [ class "ui radio checkbox" ]
