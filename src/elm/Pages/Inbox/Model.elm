@@ -49,25 +49,31 @@ emails =
 </p>
 
 <p>
-    Can I get an update on the latest version of the proposal to working group. The meeting is on Thursday and I think it's important that we all be on the same page coming into the meeting. If everyone has had a chance to vet the document in advance, I think that we have a better chance of moving the proposal to the next stage.
-</p>
-
-    <img src="http://placehold.it/350x150">
-
-<p>
-I think the proposal has wide implications for the way we do business and it would be a shame for it to get held up at this stage because nobody had eyes on it before the meeting.
+    Can I get an update on the latest version of the proposal to working group?
 </p>
 
 <p>
-I appreciate your attention to this!
+    The meeting is on Thursday and I think it's important that we all be on the same page coming into the meeting. If everyone has had a chance to vet the document in advance, I think that we have a better chance of moving the proposal to the next stage.
 </p>
 
-Thanks, <br/>
-Josie
+<p>
+    This proposal has wide implications for the way we do business and it would be a shame for it to get held up at this stage because nobody had eyes on it before the meeting.
+</p>
 
-Josie Packard
-SVP for Financial Products
-Great Northern Company
+<p>
+    I appreciate your attention to this!
+</p>
+
+<p>
+  Thanks, <br/>
+  Josie
+</p>
+<p>
+  ---<br />
+  Josie Packard <br />
+  SVP for Financial Products<br />
+  Great Northern Company<br />
+</p>
             """
         , emailDelivery = Immediate
         , options =
@@ -85,18 +91,29 @@ Great Northern Company
         , teaser = " Hi Everyone, It's come to our attention that"
         , body =
             """
-              Hi Everyone,
+<p>
+    Hi Everyone,
+</p>
 
-It has come to our attention that the updated guidance on the corporate vacation policy contained an error. Please note that employees do not have unlimited vacation days as part of the revised policy.
+<p>
+    It has come to our attention that the updated guidance on the corporate vacation policy contained an error. Please note that employees <strong>do not have unlimited vacation days</strong> as part of the revised policy.
+</p>
 
-This email notification serves as an effective update of the corporate vacation policy until a new policy statement can be drafted. Please reply immediately to this email to acknowledge receipt of this communication and acceptance of the update.
+<p>
+    This email notification serves as an effective update of the corporate vacation policy until a new policy statement can be drafted. Please reply immediately to this email to acknowledge receipt of this communication and acceptance of the update.
+</p>
 
-Sincerely,
-Dale Cooper
+<p>
+    Sincerely,<br />
+    Dale Cooper
+</p>
 
-Dale Cooper
-Human Resources Director
-Great Northern Company
+<p>
+    ---<br />
+    Dale Cooper<br />
+    Human Resources Director<br />
+    Great Northern Company<br />
+<p>
               """
         , emailDelivery = Immediate
         , options =
@@ -114,20 +131,33 @@ Great Northern Company
         , teaser = " Dear Mr. Smith, I just wanted to point out that in the instructions"
         , body =
             """
-              Dear Mr. Smith,
+<p>
+    Dear Mr. Smith,
+</p>
 
-I just wanted to point out that in the instructions you sent to out global network, you failed to mention that for our London office, disclosure documentation needs to be delivered in hard and electronic format as is the custom here. This is a part of our workflow that is crucial to maintaining client confidence.
+<p>
+    I just wanted to point out that in the instructions you sent to out global network, you failed to mention that for our London office, disclosure documentation needs to be delivered in hard and electronic format as is the custom here. This is a part of our workflow that is crucial to maintaining client confidence.
+</p>
 
-As I'm sure you understand, it is important to take into account local customs and business practice when circulating procedural documentation to our  network of 53 offices worldwide. It's a daunting task, but one that is of the utmost importance.
+<p>
+    As I'm sure you understand, it is important to take into account local customs and business practice when circulating procedural documentation to our network of 53 offices worldwide. It's a daunting task, but one that is of the utmost importance.
+</p>
 
-Thanks you for your attention to this matter. I kindly request that you reissue the instructions with correction to this matter.
+<p>
+    Thank you for your attention to this matter. I kindly request that you reissue the instructions with correction to this matter.
+</p>
 
-Kindly Yours,
-Leo Johnson
+<p>
+    Kindly Yours,<br />
+    Leo Johnson
+</p>
 
-Leo Johnson
-General Director, London Office
-Great Northern Company
+<p>
+    ---<br />
+    Leo Johnson<br />
+    General Director, London Office<br />
+    Great Northern Company
+</p>
               """
         , emailDelivery = Immediate
         , options =
@@ -145,16 +175,25 @@ Great Northern Company
         , teaser = "It is important that you respond immediately to the previous"
         , body =
             """
-It is important that you respond immediately to the previous correspondence regarding the corporate vacation policy. Failure to do so may result in immediate suspension of employee benefits.
+<p>
+    It is important that you respond immediately to the previous correspondence regarding the corporate vacation policy. Failure to do so may result in immediate suspension of employee benefits.
+</p>
 
-Thank you for your attention.
+<p>
+    Thank you for your attention.
+</p>
 
-Sincerely,
-Dale Cooper
+<p>
+    Sincerely,<br />
+    Dale Cooper
+</p>
 
-Dale Cooper
-Human Resources Director
-Great Northern Company
+<p>
+    ---<br />
+    Dale Cooper<br />
+    Human Resources Director<br />
+    Great Northern Company<br />
+<p>
           """
         , emailDelivery = Delayed
         , options =
@@ -172,16 +211,25 @@ Great Northern Company
         , teaser = " Dear Mr. Smith, I just wanted to point out that in the instructions"
         , body =
             """
-              Dear Mr. Smith,
+<p>
+    Dear Mr. Smith,
+</p>
 
-Just following up on the previous issue. Please acknowledge.
+<p>
+    Just following up on the previous issue. Please acknowledge.
+</p>
 
-Yours,
-Leo Johnson
+<p>
+    Yours,<br />
+    Leo Johnson
+</p>
 
-Leo Johnson
-General Director, London Office
-Great Northern Company
+<p>
+    ---<br />
+    Leo Johnson<br />
+    General Director, London Office<br />
+    Great Northern Company
+</p>
               """
         , emailDelivery = Delayed
         , options =
