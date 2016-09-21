@@ -85,11 +85,11 @@ update action model =
                                 Just _ ->
                                     model.emailsStatus
 
-                focus =
+                scrollTo =
                     Dom.toTop "selected-email"
             in
                 { model
                     | selectedEmail = emailType
                     , emailsStatus = emailsStatus
                 }
-                    ! [ Task.perform (\_ -> NoOp) (\_ -> NoOp) focus ]
+                    ! [ Task.perform (\_ -> NoOp) (\_ -> NoOp) scrollTo ]
