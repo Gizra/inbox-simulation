@@ -44,15 +44,25 @@ emails =
         , teaser = "Can I get an update on the latest version of the"
         , body =
             """
-            John,
+<p>
+    John,
+</p>
 
-Can I get an update on the latest version of the proposal to working group. The meeting is on Thursday and I think it's important that we all be on the same page coming into the meeting. If everyone has had a chance to vet the document in advance, I think that we have a better chance of moving the proposal to the next stage.
+<p>
+    Can I get an update on the latest version of the proposal to working group. The meeting is on Thursday and I think it's important that we all be on the same page coming into the meeting. If everyone has had a chance to vet the document in advance, I think that we have a better chance of moving the proposal to the next stage.
+</p>
 
+    <img src="http://placehold.it/350x150">
+
+<p>
 I think the proposal has wide implications for the way we do business and it would be a shame for it to get held up at this stage because nobody had eyes on it before the meeting.
+</p>
 
+<p>
 I appreciate your attention to this!
+</p>
 
-Thanks,
+Thanks, <br/>
 Josie
 
 Josie Packard

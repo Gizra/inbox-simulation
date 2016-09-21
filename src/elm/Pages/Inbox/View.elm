@@ -4,6 +4,7 @@ import Dict exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
+import Json.Encode as JSON exposing (string)
 import Pages.Inbox.Model exposing (..)
 import Pages.Inbox.Update exposing (..)
 import Email.Model exposing (..)
@@ -214,9 +215,12 @@ viewSelectedEmail model =
                                 , div [ class "content__messages__selected__header_date" ]
                                     [ text "Tue 9/13/2016 10:26 AM" ]
                                 ]
-                            , div [ class "content__messages__selected__content" ]
-                                [ text email.body
+                            , div
+                                [ class "content__messages__selected__content"
+                                  -- Treat the email body as HTML.
+                                , property "innerHTML" <| JSON.string email.body
                                 ]
+                                []
                             , div [ class "ui form icon message content__messages__action" ]
                                 [ i [ class "inbox icon" ]
                                     []
