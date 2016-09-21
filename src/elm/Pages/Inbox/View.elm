@@ -197,7 +197,10 @@ viewSelectedEmail model =
                         div [] []
 
                     Just email ->
-                        div [ class "content__messages__selected" ]
+                        div
+                            [ class "content__messages__selected"
+                            , id "selected-email"
+                            ]
                             [ div [ class "content__messages__selected__header" ]
                                 [ div [ class "content__messages__selected__header_title" ]
                                     [ text email.subject ]
