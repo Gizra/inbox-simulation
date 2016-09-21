@@ -10,7 +10,6 @@ setActiveEmail =
     suite "setActiveEmail action"
         [ test "no active email" (assertEqual Nothing (.selectedEmail <| updateInbox <| Inbox.SetSelectedEmail Nothing))
         , test "active email" (assertEqual (Just "Vacation") (.selectedEmail <| updateInbox <| Inbox.SetSelectedEmail <| Just "Vacation"))
-        , test "Re-activivate email makes it non-active" (assertEqual Nothing (.selectedEmail <| updateInbox <| Inbox.SetSelectedEmail <| Just "Urgent"))
         ]
 
 
