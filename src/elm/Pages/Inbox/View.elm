@@ -217,6 +217,7 @@ viewSelectedEmail model =
                                 ]
                             , div
                                 [ class "content__messages__selected__content"
+                                  -- Treat the email body as HTML.
                                 , property "innerHTML" <| JSON.string email.body
                                 ]
                                 []
