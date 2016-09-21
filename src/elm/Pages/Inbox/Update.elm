@@ -1,6 +1,7 @@
 module Pages.Inbox.Update exposing (update, Msg(..))
 
 import Dict exposing (..)
+import Dom.Scroll as Dom exposing (..)
 import Email.Model exposing (..)
 import Pages.Inbox.Model as Inbox exposing (..)
 import Process exposing (sleep)
@@ -14,6 +15,7 @@ init =
 
 type Msg
     = DeliverEmail EmailType
+    | NoOp
     | SetEmailStatus EmailType Int
     | SetSelectedEmail (Maybe EmailType)
 
@@ -33,6 +35,9 @@ update action model =
                         emailType :: model.shownEmails
             in
                 { model | shownEmails = shownEmails } ! []
+
+        NoOp ->
+            model ! []
 
         SetEmailStatus emailType keyOption ->
             let
@@ -79,9 +84,12 @@ update action model =
 
                                 Just _ ->
                                     model.emailsStatus
+
+                scrollTo =
+                    Dom.toTop "selected-email"
             in
                 { model
                     | selectedEmail = emailType
                     , emailsStatus = emailsStatus
                 }
-                    ! []
+                    ! [ Task.perform (\_ -> NoOp) (\_ -> NoOp) scrollTo ]
