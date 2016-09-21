@@ -26,7 +26,7 @@ update action model =
             let
                 shownEmails =
                     if (List.any (\type' -> emailType == type') model.shownEmails) then
-                        -- Email type is already in teh shown emails list.
+                        -- Email type is already in the shown emails list.
                         model.shownEmails
                     else
                         -- Append the new email type to the shown list.
