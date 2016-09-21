@@ -5,7 +5,6 @@ import Email.Model exposing (..)
 import Pages.Inbox.Model as Inbox exposing (..)
 import Process exposing (sleep)
 import Task
-import Time exposing (Time, second)
 
 
 init : ( Model, Cmd Msg )
@@ -62,24 +61,7 @@ update action model =
                 { model | emailsStatus = emailsStatus } ! cmd
 
         SetSelectedEmail emailType ->
-            -- If same email is selected, we un-select the emails.
             let
-                selectedEmail =
-                    case model.selectedEmail of
-                        Nothing ->
-                            emailType
-
-                        Just val ->
-                            case emailType of
-                                Nothing ->
-                                    emailType
-
-                                Just val' ->
-                                    if val == val' then
-                                        Nothing
-                                    else
-                                        Just val'
-
                 -- Set email status
                 emailsStatus =
                     case emailType of
@@ -99,7 +81,7 @@ update action model =
                                     model.emailsStatus
             in
                 { model
-                    | selectedEmail = selectedEmail
+                    | selectedEmail = emailType
                     , emailsStatus = emailsStatus
                 }
                     ! []
